@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
+import { Usermodel } from '../models/usermodel';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Signin } from '../models/signin';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
   private isAuthenticated: boolean = false;
+  usermodel:Usermodel=new Usermodel();
+  signIn(data:Signin):Observable<Usermodel>{
+    return this.httpClient.post("http://localhost:8090/signin", data);
 
-  signIn() {
-    this.isAuthenticated = true;
   }
 
-  signOut() {
-    this.isAuthenticated = false;
+  signOut():Observable<any>{
+    return this.httpClient.get("http://localhost:8090/signout");
   }
-  // signUp(){
-    
-  // }
+  signUp(data:Usermodel):Observable<Usermodel>{
+    return this.httpClient.post("http://localhost:8090/user", data);
+  }
 
   getIsAuthenticated(): boolean {
     return this.isAuthenticated;
