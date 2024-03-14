@@ -1,3 +1,29 @@
-<p>signin works!</p>
-<button (click)="signIn()">Sign In</button>
-<button (click)="signUp()">Sign In</button>
+
+<div class='container-fluid'>
+    <div class='jumbotron  text-info text-center'>
+        <h1 >FundRaise App</h1>
+        <p class='lead'>Welcome To FundRaise App</p>
+        <p class='lead'>Login Page</p>
+    </div>
+   
+
+ </div>
+<div class="row ">
+    <div class="col-md-6 offset-sm-3 text-left">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email" class="text-secondary">Email</label>
+          <input formControlName="email" id="email" class="form-control" type="email" />
+        </div>
+        <div class="form-group">
+          <label for="password" class="text-secondary">Password</label>
+          <input formControlName="password" id="password" class="form-control" type="password" />
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </form>
+    </div>   
+ 
+  </div>
+  <div class="d-flex info">
+   <p>Don't have an account Pls</p> <button class="rbutton" (click)="signUp()">Register</button> 
+  </div>
