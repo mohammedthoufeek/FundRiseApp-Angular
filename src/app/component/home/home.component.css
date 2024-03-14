@@ -1,0 +1,12 @@
+.listbox{
+    margin-left: 1100px;
+}
+.boxx{
+    display: flex;
+    flex-direction: row;
+}
+.rbutton{
+    margin-left: 10px;
+      padding: 5px 12px;
+    size: 6px;
+}
