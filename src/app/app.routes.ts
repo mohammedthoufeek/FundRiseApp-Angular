@@ -8,6 +8,7 @@ import { NotificationComponent } from './component/notification/notification.com
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
+import { BankAccountComponent } from './component/bank-account/bank-account.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'transaction', component: TransactionsComponent },
+  { path: 'bank-account', component: BankAccountComponent },
   { path: 'messages', component: MessagesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }

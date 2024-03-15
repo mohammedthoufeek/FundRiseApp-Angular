@@ -12,10 +12,10 @@ export class TransactionService {
   constructor(private httpClient: HttpClient) { }
   transaction:Transaction=new Transaction();
   addPayment(data:Transaction):Observable<Transaction>{
-    return this.httpClient.post("http://localhost:8090/addPayment", data);
+    return this.httpClient.post("http://localhost:8090/payment", data);
  }
 
- getAllPayments(data:Transaction):Observable<Transaction>{
-    return this.httpClient.post("http://localhost:8090/addPayment/getAllPayments", data)
+  getAllPayments(data:Transaction):Observable<Transaction>{
+    return this.httpClient.get("http://localhost:8090/payments");
  }
 }
