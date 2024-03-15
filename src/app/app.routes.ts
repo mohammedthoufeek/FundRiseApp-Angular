@@ -7,6 +7,7 @@ import { PostComponent } from './component/post/post.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
+import { TransactionsComponent } from './component/transactions/transactions.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'addpost', component: PostComponent   },
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'transaction', component: TransactionsComponent },
   { path: 'messages', component: MessagesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
