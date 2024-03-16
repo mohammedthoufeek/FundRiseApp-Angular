@@ -8,23 +8,21 @@ import { Observable } from 'rxjs';
 })
 export class BankAccountService {
 
-  
-
   constructor(private httpClient: HttpClient) { }
   bankAccount:BankAccountModule = new BankAccountModule();
   createAccount(data:BankAccountModule, id?:number):Observable<BankAccountModule>{
-    return this.httpClient.post(`http://localhost:8090/account/${id}`, data);
+    return this.httpClient.post(`http://localhost:8090/account/${id}`, [data]);
   }
 
-  updateAccount(data:BankAccountModule):Observable<BankAccountModule>{
-    return this.httpClient.patch("http://localhost:8090/account",data);
+  updateAccount(id:number,name:String):Observable<BankAccountModule>{
+    return this.httpClient.patch("http://localhost:8090/account",[id,name]);
   }
 
-  getAccountById(data:BankAccountModule):Observable<BankAccountModule>{
-    return this.httpClient.get(`http://localhost:8090/account/{id}`);
+  getAccountById(id:number):Observable<BankAccountModule>{
+    return this.httpClient.get(`http://localhost:8090/account/${id}`);
   }
 
-  deleteAccountById(data:BankAccountModule):Observable<BankAccountModule>{
-    return this.httpClient.delete("http://localhost:8090/account/{id}");
+  deleteAccountById(id:number):Observable<BankAccountModule>{
+    return this.httpClient.delete(`http://localhost:8090/account/${id}`);
   }
 }
