@@ -8,11 +8,13 @@ import { NotificationComponent } from './component/notification/notification.com
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
+import { ListpostComponent } from './component/listpost/listpost.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
   { path: 'register', component: SignupComponent   },
   { path: 'addpost', component: AddpostComponent   },
+  {path: "post/:postId", component: PostComponent},
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },

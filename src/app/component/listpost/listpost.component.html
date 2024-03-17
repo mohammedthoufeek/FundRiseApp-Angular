@@ -1,0 +1,17 @@
+<p>listpost works!</p>
+
+   
+
+<div *ngIf="posts.length > 0">
+    <h2>Posts</h2>
+    <ul>
+        <li *ngFor="let post of posts" (click)="viewPostDetails(post)">
+        <h2>{{ post.title }}</h2>
+        <h5>{{ post.cause}}</h5>
+        <h4>{{post.amountNeeded}}</h4>
+        </li>
+    </ul>
+  </div>
+  <div *ngIf="posts.length === 0">
+    <p>No posts available</p>
+  </div>
