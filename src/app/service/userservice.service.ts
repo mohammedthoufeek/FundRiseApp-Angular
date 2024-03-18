@@ -16,9 +16,9 @@ export class UserService {
   messageuser:Usermodel=new Usermodel();
   signIn(data:Signin):Observable<Usermodel>{
     return this.httpClient.post("http://localhost:8090/signin", data);
-
   }
   signOut():Observable<any>{
+    
     return this.httpClient.get("http://localhost:8090/signout");
   }
   signUp(data:Usermodel):Observable<Usermodel>{
