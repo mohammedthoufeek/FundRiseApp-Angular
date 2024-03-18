@@ -1,0 +1,26 @@
+<!-- comment.component.html -->
+
+<div class="comment-form">
+  <h3>Add Comment</h3>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <input type="text">
+    </div>
+    <button type="submit">Submit Comment</button>
+  </form>
+</div>
+
+<!-- Display existing comments -->
+<div class="comment-list">
+  <h3>Comments</h3>
+  <ul>
+    <li *ngFor="let comment of comments">
+      <div class="comment-item">
+        <p><strong>User ID: {{ comment.userId }}</strong></p>
+        <p>Date: {{ comment.date }}</p>
+        <p>{{ comment.message }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
