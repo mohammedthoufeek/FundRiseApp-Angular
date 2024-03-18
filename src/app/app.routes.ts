@@ -9,12 +9,11 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
 import { BankAccountComponent } from './component/bank-account/bank-account.component';
-import { AddpostComponent } from './component/addpost/addpost.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
   { path: 'register', component: SignupComponent   },
-  { path: 'addpost', component: AddpostComponent   },
+  { path: 'addpost', component: PostComponent   },
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'transaction', component: TransactionsComponent },
