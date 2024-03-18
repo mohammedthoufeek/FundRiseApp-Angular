@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { BankAccountModule } from '../../models/bank-account.module';
+import { BankAccount } from '../../models/bank-account';
 import { BankAccountService } from '../../service/bank-account.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class BankAccountComponent {
 
 
   bankForm: FormGroup;
-  bankAccount: BankAccountModule = new BankAccountModule();
+  bankAccount: BankAccount = new BankAccount();
 
   constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
     this.bankForm = this.fb.group({
@@ -30,7 +30,7 @@ export class BankAccountComponent {
     });
   }
   onSubmit(){
-    const bankAccountData: BankAccountModule = this.bankForm.value as BankAccountModule
+    const bankAccountData: BankAccount = this.bankForm.value as BankAccount
 
     this.bankAccountService.createAccount(bankAccountData,this.userService.usermodel.id)
     .subscribe({

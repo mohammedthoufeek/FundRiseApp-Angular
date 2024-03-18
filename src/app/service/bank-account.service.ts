@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BankAccountModule } from '../models/bank-account.module';
+import { BankAccount } from '../models/bank-account';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,20 +11,20 @@ export class BankAccountService {
   
 
   constructor(private httpClient: HttpClient) { }
-  bankAccount:BankAccountModule = new BankAccountModule();
-  createAccount(data:BankAccountModule, id?:number):Observable<BankAccountModule>{
+  bankAccount:BankAccount = new BankAccount();
+  createAccount(data:BankAccount, id?:number):Observable<BankAccount>{
     return this.httpClient.post(`http://localhost:8090/account/${id}`, data);
   }
 
-  updateAccount(data:BankAccountModule):Observable<BankAccountModule>{
+  updateAccount(data:BankAccount):Observable<BankAccount>{
     return this.httpClient.patch("http://localhost:8090/account",data);
   }
 
-  getAccountById(data:BankAccountModule):Observable<BankAccountModule>{
+  getAccountById(data:BankAccount):Observable<BankAccount>{
     return this.httpClient.get(`http://localhost:8090/account/{id}`);
   }
 
-  deleteAccountById(data:BankAccountModule):Observable<BankAccountModule>{
+  deleteAccountById(data:BankAccount):Observable<BankAccount>{
     return this.httpClient.delete("http://localhost:8090/account/{id}");
   }
 }
