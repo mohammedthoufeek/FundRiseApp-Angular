@@ -11,7 +11,8 @@ export class BankAccountService {
   constructor(private httpClient: HttpClient) { }
   bankAccount:BankAccountModule = new BankAccountModule();
   createAccount(data:BankAccountModule, id?:number):Observable<BankAccountModule>{
-    return this.httpClient.post(`http://localhost:8090/account/${id}`, [data]);
+    console.log(data)
+    return this.httpClient.post(`http://localhost:8090/accounts/${id}`, data);
   }
 
   updateAccount(id:number,name:String):Observable<BankAccountModule>{

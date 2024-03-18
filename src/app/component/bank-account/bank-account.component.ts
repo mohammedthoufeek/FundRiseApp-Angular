@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../service/userservice.service';
 
+
 @Component({
   selector: 'app-bank-account',
   standalone: true,
@@ -17,11 +18,10 @@ export class BankAccountComponent {
 
 
   bankForm: FormGroup;
-  bankAccount: BankAccountModule = new BankAccountModule();
+  bankAccount: BankAccountModule =this.bankAccountService.bankAccount;
 
   constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
     this.bankForm = this.fb.group({
-      id: [this.bankAccount.id],
       balance: [this.bankAccount.balance],
       accountName: [this.bankAccount.accountName],
       accountNumber: [this.bankAccount.accountNumber],
@@ -43,6 +43,10 @@ export class BankAccountComponent {
         console.log(err);
       }
     })
+  }
+
+  showDetails(bankForm:FormGroup){
+    this.router.navigateByUrl('accounts/'+bankForm);
   }
 
 }
