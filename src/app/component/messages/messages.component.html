@@ -1,1 +1,17 @@
-<p>messages works!</p>
+<div>
+    <h1>To:{{touser.name}}</h1>
+    <h6>{{touser.usertype}}</h6>
+</div>
+
+<div></div>
+<div>
+    <div *ngFor="let display of displayMessage">
+        <h1>{{display.userName}}</h1>
+        <p>{{display.message}}</p><span>{{ display.date}}</span><span>{{display.time}}</span>
+    </div></div>
+    <div>
+    <form> 
+        <input type="text" id="name" name="name" [(ngModel)]="messageModel.message"><br>
+        <button (click)="addMessage()" class="btn btn-success">Send Message</button>
+    </form>
+</div>

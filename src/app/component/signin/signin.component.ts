@@ -16,7 +16,9 @@ import { Signin } from '../../models/signin';
 export class SigninComponent {
   userForm: FormGroup;
   signinModel: Signin = new Signin();
+
   constructor(private userService: UserService,private router:Router,private fb: FormBuilder) {
+    localStorage.setItem("isAuthenticated","false");
     this.userForm = this.fb.group({
       email: [this.signinModel.email],
       password: [this.signinModel.password]
@@ -32,6 +34,9 @@ export class SigninComponent {
             console.log(data);
              this.userService.usermodel=data;
              console.log(this.userService.usermodel,this.userService.usermodel.name)
+             localStorage.setItem("isAuthenticated","true");
+             localStorage.setItem("userdata",JSON.stringify(data));
+             
             this.userService.setIsAuthenticated(true);
             this.router.navigate(['home']);
             // this.message = "Account Added.";
