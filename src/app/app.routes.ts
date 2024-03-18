@@ -7,6 +7,7 @@ import { PostComponent } from './component/post/post.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
+import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },
+  { path: 'messageslist', component: ListmessagesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];
