@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../service/userservice.service';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+NavigationEnd
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -12,16 +12,37 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  constructor(private userService: UserService,private router:Router) {}
+
+  isSigned?:boolean;
+  constructor(private userService: UserService,private router:Router) {
+    const value: string | null = localStorage.getItem("isAuthenticated");
+    this.isSigned = value === "true";
+    console.log(value, this.isSigned);
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const newValue: string | null = localStorage.getItem("isAuthenticated");
+        this.isSigned = newValue === "true";
+        console.log(newValue, this.isSigned);
+      }
+    });
+  }
+  // ngOnInit(): void {
+  //   const Value: string | null = localStorage.getItem("isAuthenticated");
+  //   this.isSigned = Value === "true";
+  //   console.log(Value, this.isSigned);
+  // }
   get isUserSignedIn(): boolean {
     return this.userService.getIsAuthenticated();
   }
+ 
   signOut() {
     this.userService.signOut().subscribe(
       {
         next: (data) => {
           console.log(data);
           this.userService.setIsAuthenticated(false);
+          localStorage.setItem("isAuthenticated","false");
+          localStorage.removeItem("userdata");
           this.router.navigate(['login']);
           // this.message = "Account Added.
           // this.errorMessage = "";
