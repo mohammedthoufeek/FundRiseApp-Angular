@@ -8,8 +8,13 @@ import { NotificationComponent } from './component/notification/notification.com
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
 
+import { TransactionsComponent } from './component/transactions/transactions.component';
+import { BankAccountComponent } from './component/bank-account/bank-account.component';
+
+
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +23,8 @@ export const routes: Routes = [
   { path: 'addpost', component: AddpostComponent   },
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'transaction', component: TransactionsComponent },
+  { path: 'bank-account', component: BankAccountComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'messageslist', component: ListmessagesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
