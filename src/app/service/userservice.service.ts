@@ -39,7 +39,7 @@ export class UserService {
   getCharity():Observable<any>{
     return this.httpClient.get("http://localhost:8090/profiles/charity");
   }
-  getprofileById(id?:number):Observable<Usermodel>{
-    return this.httpClient.get("http://localhost:8090/profile/"+ id);
+  getProfileById(id?:number):Observable<any>{
+    return this.httpClient.get(`http://localhost:8090/profile/${id}`);
   }
 }
