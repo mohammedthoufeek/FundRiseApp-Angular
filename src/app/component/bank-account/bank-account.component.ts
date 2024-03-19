@@ -22,10 +22,11 @@ export class BankAccountComponent {
   newBankAccount: BankAccount = new BankAccount();
   bankAccounts:BankAccount= this.bankAccountService.bankAccount;
 
+  id = this.userService.usermodel.id;
 
   constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
 
-    this.bankAccountService.getAccountById(this.userService.usermodel.id)
+    this.bankAccountService.getAccountById(this.id)
     .subscribe({
       next:(data)=>{
         console.log(data);
@@ -50,7 +51,7 @@ export class BankAccountComponent {
   onSubmit(){
     console.log("new form data: ",this.newBankAccount)
 
-    this.bankAccountService.createAccount(this.newBankAccount,this.userService.usermodel.id)
+    this.bankAccountService.createAccount(this.newBankAccount,this.id)
     .subscribe({
       next: (data) =>{
         console.log("data: ",data)
