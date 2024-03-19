@@ -1,1 +1,21 @@
-<p>notification works!</p>
+<!-- notification.component.html -->
+<div  *ngIf="notificationData.length > 0; else noNotifications">
+  <h2 class="text-info">Notifications</h2>
+  <ul class="list-group notification-list">
+    <li *ngFor="let notification of notificationData"  class="list-group-item list-group-item-info notification-item">
+      {{ notification.message }} 
+      <div class ="DateTime">
+        <sub>{{ getTimeParts(notification.time)[0] || '' }}:</sub>
+      <sub>{{ getTimeParts(notification.time)[1] || '' }}:</sub>
+      <sub>{{ getTimeParts(notification.time)[2]  .split('.')[0] || '' }}</sub>,
+      <sub>{{ notification.date }}</sub>
+      </div>
+      
+    
+    </li>
+  </ul>
+</div>
+
+<ng-template #noNotifications>
+  <p>No notifications Found!!</p>
+</ng-template>

@@ -1,6 +1,4 @@
-.listbox{
-    margin-left: 1100px;
-}
+
 .boxx{
     display: flex;
     flex-direction: row;
@@ -17,7 +15,7 @@
 .boxx {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     border-bottom: 1px solid #eee; 
     padding: 5px 0; 
 }

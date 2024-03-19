@@ -1,1 +1,12 @@
-<p>profile works!</p>
+
+<div class="profilebox  text-center" *ngIf="user">
+    <h1 class="text-info">Your Profile!!</h1>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Address:</strong> {{ user.address }}</p>
+    <p><strong>Phone Number:</strong> {{ user.phonenumber }}</p>
+    <p><strong>Age:</strong> {{ user.age }}</p>
+    <p><strong>DOB:</strong> {{ user.dob }}</p>
+    <p><strong>User Type:</strong> {{ user.usertype }}</p>
+  </div>
+  

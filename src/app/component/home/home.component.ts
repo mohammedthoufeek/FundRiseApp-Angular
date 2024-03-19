@@ -45,7 +45,7 @@ export class HomeComponent {
       {
         next: (data) => {
           console.log(data);
-          this.charitylist = data;
+          this.investorlist = data;
           if (data.length>0)this.isInvestor=false
         },
         error: (err) => {
@@ -61,7 +61,7 @@ export class HomeComponent {
       {
         next: (data) => {
           console.log(data);
-          this.investorlist = data;
+          this.charitylist = data;
           if (data!=null)this.isCharity=false
         },
         error: (err) => {
@@ -78,7 +78,7 @@ export class HomeComponent {
 
   }
   mapmessage(id?:number){
-    this.userService.getprofileById(id).subscribe(
+    this.userService.getProfileById(id).subscribe(
       {
         next: (data) => {
           console.log(data);
