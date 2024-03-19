@@ -1,73 +1,48 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
-import { BankAccount } from '../../models/bank-account';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { BankAccountModule } from '../../models/bank-account.module';
 import { BankAccountService } from '../../service/bank-account.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../service/userservice.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-bank-account',
   standalone: true,
-  imports: [FormsModule,HttpClientModule,CommonModule],
+  imports: [ReactiveFormsModule,HttpClientModule],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css'
 })
 export class BankAccountComponent {
 
-  success:string="";
-  errorMessage:string="";
 
-  newBankAccount: BankAccount = new BankAccount();
-  bankAccounts:BankAccount= this.bankAccountService.bankAccount;
-
+  bankForm: FormGroup;
+  bankAccount: BankAccountModule = new BankAccountModule();
 
   constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
-
-    this.bankAccountService.getAccountById(this.userService.usermodel.id)
-    .subscribe({
-      next:(data)=>{
-        console.log(data);
-        this.success="displayed all accounts";
-        this.errorMessage="";
-        this.bankAccountService.bankAccount=data;
-        this.newBankAccount=data;
-        console.log(this.bankAccountService.bankAccount);
-        console.log(this.newBankAccount);
-      },
-      error: (err)=>{
-        console.log(err);
-        console.log(err.error);
-        this.errorMessage=err.error;
-        this.success="";
-      }
+    this.bankForm = this.fb.group({
+      id: [this.bankAccount.id],
+      balance: [this.bankAccount.balance],
+      accountName: [this.bankAccount.accountName],
+      accountNumber: [this.bankAccount.accountNumber],
+      cvv: [this.bankAccount.cvv],
+      bankName: [this.bankAccount.bankName]
     });
-    
-    console.log(this.bankAccounts);
-
   }
   onSubmit(){
-    console.log("new form data: ",this.newBankAccount)
+    const bankAccountData: BankAccountModule = this.bankForm.value as BankAccountModule
 
-    this.bankAccountService.createAccount(this.newBankAccount,this.userService.usermodel.id)
+    this.bankAccountService.createAccount(bankAccountData,this.userService.usermodel.id)
     .subscribe({
       next: (data) =>{
-        console.log("data: ",data)
-        this.success = "bank account created successfully"
-        this.errorMessage="";
-        this.bankAccountService.bankAccount=data;
-        this.newBankAccount=data;
-        console.log(this.bankAccountService.bankAccount)
-        console.log(this.newBankAccount)
-        this.router.navigate(['transaction'])
+        console.log(data)
+        this.bankAccountService.bankAccount= data;
+        this.router.navigate(['profile'])
       },
       error: (err) =>{
         console.log(err);
-        console.log(err.error);
-        this.errorMessage=err.error;
-        this.success="";
       }
-    });
+    })
   }
+
 }
