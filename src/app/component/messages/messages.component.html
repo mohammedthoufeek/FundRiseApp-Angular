@@ -1,17 +1,23 @@
-<div>
-    <h1>To:{{touser.name}}</h1>
-    <h6>{{touser.usertype}}</h6>
+<div class="user-info-container">
+    <h1 class="user-name">To: {{touser.name}}</h1>
+    <h6 class="user-type">{{touser.usertype}}</h6>
 </div>
 
 <div></div>
-<div>
-    <div *ngFor="let display of displayMessage">
-        <h1>{{display.userName}}</h1>
-        <p>{{display.message}}</p><span>{{ display.date}}</span><span>{{display.time}}</span>
-    </div></div>
-    <div>
-    <form> 
-        <input type="text" id="name" name="name" [(ngModel)]="messageModel.message"><br>
-        <button (click)="addMessage()" class="btn btn-success">Send Message</button>
+<div class="message-container">
+    <div *ngFor="let display of displayMessage" class="message-item">
+        <div class="username" *ngIf="display.user==fromuser.id"><h6>Me</h6></div>
+        <div *ngIf="display.user!=fromuser.id" class="username">{{display.userName}}</div>
+        <div class="message">{{display.message}}</div>
+        <div class="meta-info">
+            <span class="date">{{display.date}},  </span>
+            <span class="time">{{display.time}}</span>
+        </div>
+    </div>
+</div>
+<div class="message-input-container">
+    <form>
+        <input type="text" id="name" name="name" [(ngModel)]="messageModel.message" placeholder="Type your message here...">
+        <button (click)="addMessage()" class="btn btn-success">Send</button>
     </form>
 </div>
