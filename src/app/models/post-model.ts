@@ -2,6 +2,7 @@ import { PostType } from "./posttype.enum";
 
 export class PostModel {
     constructor(
+        public id?:number,
         public title?:string,
         public urlField?: string,
         public cause?: string,

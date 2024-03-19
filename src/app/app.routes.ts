@@ -10,11 +10,15 @@ import { MessagesComponent } from './component/messages/messages.component';
 import { CommentComponent } from './component/comment/comment.component';
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
+
+import { ListpostComponent } from './component/listpost/listpost.component';
+
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: SigninComponent  },
   { path: 'register', component: SignupComponent   },
   { path: 'addpost', component: AddpostComponent   },
+  {path: "post/:postId", component: PostComponent},
   { path: 'notification', component: NotificationComponent },
   {path:'comment', component: CommentComponent},
   { path: 'profile', component: ProfileComponent },

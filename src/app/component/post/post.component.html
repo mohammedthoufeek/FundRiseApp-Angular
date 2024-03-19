@@ -1,1 +1,12 @@
-<p>post works!</p>
+<h1 class="text-primary">Post Details</h1>
+
+<div class="card mb-3" style="background-color: #e0f7fa;"> 
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <iframe [src]="safeUrl" class="card-img-top" style="height: 300px;"></iframe>
+        <p class="card-text"><strong>Cause:</strong> {{ post.cause }}</p>
+        <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
+        <p class="card-text"><strong>Amount Needed:</strong> {{ post.amountNeeded }}</p>
+        <p class="card-text"><strong>Post Type:</strong> {{ post.postType }}</p>
+    </div>
+</div>
