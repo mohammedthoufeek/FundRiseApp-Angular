@@ -10,6 +10,10 @@ import { Signin } from '../models/signin';
 })
 export class UserService {
 
+  private isAuthenticated: boolean = false;
+  usermodel:Usermodel=new Usermodel();
+  messageuser:Usermodel=new Usermodel();
+
   constructor(private httpClient: HttpClient) {
     const storedData = localStorage.getItem("userdata");
     let storedId;
@@ -23,13 +27,14 @@ export class UserService {
       console.log("No userdata found in localStorage");
     }
    }
-  private isAuthenticated: boolean = false;
-  usermodel:Usermodel=new Usermodel();
-  messageuser:Usermodel=new Usermodel();
+
+ 
+
   signIn(data:Signin):Observable<Usermodel>{
     return this.httpClient.post("http://localhost:8090/signin", data);
 
   }
+
   signOut():Observable<any>{
     return this.httpClient.get("http://localhost:8090/signout");
   }
