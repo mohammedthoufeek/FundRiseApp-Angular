@@ -13,15 +13,15 @@ export class BankAccountService {
   constructor(private httpClient: HttpClient) { }
   bankAccount:BankAccount = new BankAccount();
   createAccount(data:BankAccount, id?:number):Observable<BankAccount>{
-    return this.httpClient.post(`http://localhost:8090/account/${id}`, data);
+    return this.httpClient.post(`http://localhost:8090/accounts/${id}`, data);
   }
 
   updateAccount(data:BankAccount):Observable<BankAccount>{
     return this.httpClient.patch("http://localhost:8090/account",data);
   }
 
-  getAccountById(data:BankAccount):Observable<BankAccount>{
-    return this.httpClient.get(`http://localhost:8090/account/{id}`);
+  getAccountById(id?:number):Observable<BankAccount>{
+    return this.httpClient.get(`http://localhost:8090/account/${id}`);
   }
 
   deleteAccountById(data:BankAccount):Observable<BankAccount>{
