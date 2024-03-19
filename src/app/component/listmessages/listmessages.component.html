@@ -1,0 +1,13 @@
+
+<div class="listbox">
+<div>
+    <h5>Messages</h5>
+    <p *ngIf="isuser">No Users found</p>
+    <div *ngFor="let user of userlist" class="boxx">
+        <p>{{user.name}}</p>
+        <button class="rbutton" (click)="mapmessage(user.id)">
+            <i class="fas fa-envelope"></i> <!-- Message Icon -->
+        </button>
+    </div>
+</div>
+</div>
