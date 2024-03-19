@@ -7,11 +7,11 @@ import { PostComponent } from './component/post/post.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
-
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
+import { TransactionsComponent } from './component/transactions/transactions.component';
 
-import { ListpostComponent } from './component/listpost/listpost.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +23,7 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'messageslist', component: ListmessagesComponent },
+  {path: 'transaction/:postId', component:TransactionsComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

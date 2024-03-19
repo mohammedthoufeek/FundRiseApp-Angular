@@ -8,7 +8,7 @@
                     <h5 class="card-title">{{ post.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ post.cause }}</h6>
                     <p class="card-text">Amount Needed: {{ post.amountNeeded }}</p>
-                    <button (click)="viewPostDetails(post)" class="btn btn-primary">View Details</button>
+                    <button (click)="viewPostDetails(post.id)" class="btn btn-primary">View Details</button>
                 </div>
             </div>
         </div>
