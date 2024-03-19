@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="jumbotron text-info text-center">
+        <h1>Payment Section</h1>
+        <a href="../bank-account/" style="text-decoration: none;"><p class="alert alert-info">Create your bank account if new user!!</p></a>
+    </div>
+</div>
+ 
+<div class="row">
+    <div class="col-md-6 offset-sm-3 text-left">
+        <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="amount" class="text-secondary">Amount : </label>
+            <input formControlName="amount" id="amount" class="form-control" type="text" /><br>
+          </div>
+          <button type="submit" (click)="onSubmit()" class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+</div>
