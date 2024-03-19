@@ -1,12 +1,31 @@
-
-<div class="profilebox  text-center" *ngIf="user">
-    <h1 class="text-info">Your Profile!!</h1>
-    <p><strong>Name:</strong> {{ user.name }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Address:</strong> {{ user.address }}</p>
-    <p><strong>Phone Number:</strong> {{ user.phonenumber }}</p>
-    <p><strong>Age:</strong> {{ user.age }}</p>
-    <p><strong>DOB:</strong> {{ user.dob }}</p>
-    <p><strong>User Type:</strong> {{ user.usertype }}</p>
-  </div>
-  
+<div class="container" >
+    <h1 class="text-center mb-4">Your Profile</h1>
+    <div class="row  mt-5">
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <div *ngIf="user">
+                        <div class="row">
+                            <div class="col-md-12 text-center mb-4">
+                                <img src="../assets/image/profile.jpeg" class="img-fluid" alt="User Image" style="width: 150px; height: 200px; border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-left">
+                                    <p><strong>Name:</strong> {{ user.name }}</p>
+                                    <p><strong>Email:</strong> {{ user.email }}</p>
+                                    <p><strong>Address:</strong> {{ user.address }}</p>
+                                    <p><strong>Phone Number:</strong> {{ user.phonenumber }}</p>
+                                    <p><strong>Age:</strong> {{ user.age }}</p>
+                                    <p><strong>DOB:</strong> {{ user.dob }}</p>
+                                    <p><strong>User Type:</strong> {{ user.usertype }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
