@@ -10,18 +10,26 @@ export class PostServiceService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllPosts(): Observable<any> {
+  public getAllPosts(): Observable<any>{
     return this.http.get(
       "http://localhost:8090/posts");
   }
-  public addNewPost(newPost:PostModel,id:number)
-  :Observable<any>{
+
+
+  public addNewPost(newPost:PostModel,id:number):Observable<any>{
 
     console.log(newPost);
 
     return this.http.post<any>(
       "http://localhost:8090/post?userId=" + id,newPost);
-    }
+  }
+
+
+  public getPostById(postId:number): Observable<any>{
+    return this.http.get("http://localhost:8090/post/"+postId);
+  }
+
+
   public deletePostById(id:number):Observable<any>{
     return this.http.delete("http://localhost:8090/post/"+id);
   }

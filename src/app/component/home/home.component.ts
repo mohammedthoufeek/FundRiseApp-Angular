@@ -5,11 +5,12 @@ import { ListModel } from '../../models/list-model';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ListpostComponent } from '../listpost/listpost.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule,FormsModule,CommonModule],
+  imports: [HttpClientModule,FormsModule,CommonModule,ListpostComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
