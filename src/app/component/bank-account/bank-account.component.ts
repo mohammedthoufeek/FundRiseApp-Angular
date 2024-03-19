@@ -18,7 +18,7 @@ export class BankAccountComponent {
 
   success:string="";
   errorMessage:string="";
-
+      
   newBankAccount: BankAccount = new BankAccount();
   bankAccounts:BankAccount= this.bankAccountService.bankAccount;
 
@@ -34,8 +34,8 @@ export class BankAccountComponent {
     .subscribe({
       next:(data)=>{
         console.log(data);
-        this.success="displayed all accounts";
-        this.errorMessage="";
+        // this.success="displayed all accounts";
+        // this.errorMessage="";
         // this.bankAccountService.bankAccount=data;
         // this.newBankAccount=data;
         // console.log(this.bankAccountService.bankAccount);
@@ -44,8 +44,8 @@ export class BankAccountComponent {
       error: (err)=>{
         console.log(err);
         console.log(err.error);
-        this.errorMessage=err.error;
-        this.success="";
+        // this.errorMessage=err.error;
+        // this.success="";
       }
     });
     
