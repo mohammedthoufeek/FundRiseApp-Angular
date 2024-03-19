@@ -10,7 +10,19 @@ import { Signin } from '../models/signin';
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    const storedData = localStorage.getItem("userdata");
+    let storedId;
+    if (storedData) {
+      const data = JSON.parse(storedData);
+      this.usermodel=data;
+      console.log("local storage working",this.usermodel)
+      storedId = data.id;
+      console.log("Retrieved id from localStorage:", storedId);
+    } else {
+      console.log("No userdata found in localStorage");
+    }
+  }
   private isAuthenticated: boolean = false;
   usermodel:Usermodel=new Usermodel();
   signIn(data:Signin):Observable<Usermodel>{

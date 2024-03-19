@@ -26,16 +26,20 @@ export class BankAccountComponent {
 
   constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
 
+    
+  }
+
+  ngOnIt(){
     this.bankAccountService.getAccountById(this.id)
     .subscribe({
       next:(data)=>{
         console.log(data);
         this.success="displayed all accounts";
         this.errorMessage="";
-        this.bankAccountService.bankAccount=data;
-        this.newBankAccount=data;
-        console.log(this.bankAccountService.bankAccount);
-        console.log(this.newBankAccount);
+        // this.bankAccountService.bankAccount=data;
+        // this.newBankAccount=data;
+        // console.log(this.bankAccountService.bankAccount);
+        // console.log(this.newBankAccount);
       },
       error: (err)=>{
         console.log(err);
@@ -57,11 +61,12 @@ export class BankAccountComponent {
         console.log("data: ",data)
         this.success = "bank account created successfully"
         this.errorMessage="";
-        this.bankAccountService.bankAccount=data;
-        this.newBankAccount=data;
-        console.log(this.bankAccountService.bankAccount)
-        console.log(this.newBankAccount)
-        this.router.navigate(['transaction'])
+        // this.bankAccountService.bankAccount=data;
+        // this.newBankAccount=data;
+        // console.log(this.bankAccountService.bankAccount)
+        // console.log(this.newBankAccount)
+        // this.router.navigate(['transaction'])
+        this.newBankAccount=new BankAccount();
       },
       error: (err) =>{
         console.log(err);
