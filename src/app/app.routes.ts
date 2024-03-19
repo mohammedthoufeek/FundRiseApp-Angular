@@ -23,6 +23,7 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'messageslist', component: ListmessagesComponent },
+  {path: 'transaction', }
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];
