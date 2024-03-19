@@ -1,3 +1,4 @@
+
 export class CommentDto {
     constructor(
         public postId?:number,

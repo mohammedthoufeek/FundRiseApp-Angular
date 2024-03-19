@@ -7,7 +7,7 @@ import { PostComponent } from './component/post/post.component';
 import { NotificationComponent } from './component/notification/notification.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MessagesComponent } from './component/messages/messages.component';
-
+import { CommentComponent } from './component/comment/comment.component';
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
 export const routes: Routes = [

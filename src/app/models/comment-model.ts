@@ -5,7 +5,7 @@ export class CommentModel {
         public id?:number,
         public message?:string,
         public date?:Date,
-        public user?:Usermodel
+        
 
     ){}
 }
