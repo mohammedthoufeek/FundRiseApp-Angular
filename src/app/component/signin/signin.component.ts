@@ -37,7 +37,7 @@ export class SigninComponent {
              localStorage.setItem("isAuthenticated","true");
              localStorage.setItem("userdata",JSON.stringify(data));
              
-            this.userService.setIsAuthenticated(true);
+          //  this.userService.setIsAuthenticated(true);
             this.router.navigate(['home']);
             // this.message = "Account Added.";
             // this.errorMessage = "";

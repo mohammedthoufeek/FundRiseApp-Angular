@@ -40,8 +40,8 @@ export class NavbarComponent {
       {
         next: (data) => {
           console.log(data);
-          this.userService.setIsAuthenticated(false);
-          localStorage.setItem("isAuthenticated","false");
+          //this.userService.setIsAuthenticated(false);
+         // localStorage.setItem("isAuthenticated","false");
           localStorage.removeItem("userdata");
           this.router.navigate(['login']);
           // this.message = "Account Added.
