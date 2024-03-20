@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import {PostServiceService} from '../../service/post-service.service'
 import { UserService } from '../../service/userservice.service';
 import { PostType } from '../../models/posttype.enum';
-import { Router } from '@angular/router';
+import { NotificationServiceService } from '../../service/notification-service.service';
+import { Router } from '@angular/router'; 
+
 
 @Component({
   selector: 'app-addpost',
@@ -27,7 +29,11 @@ export class AddpostComponent {
 
   
   id:number=this.userService.usermodel.id||0;
-  constructor(private userService: UserService,private postService: PostServiceService, private router: Router){  }
+
+  constructor(private userService: UserService,private postService: PostServiceService,private notificationService:NotificationServiceService,private router:Router){ 
+    
+   }
+
 
 
   addNewPost(){
@@ -39,6 +45,7 @@ export class AddpostComponent {
         this.success = "Product Added Successfully.";
         this.errorMessage="";
         this.newPost=new PostModel();
+       // this.sendNotificationToAllUsersExceptPublisher();
       },
       error:(err)=>{
         console.log(err);
@@ -49,6 +56,26 @@ export class AddpostComponent {
     })
       this.router.navigate(['post'])
     
+
+  }
+  sendNotificationToAllUsersExceptPublisher(){
+   
+    this.notificationService.sendNotificationToAllUsersExceptPublisher(this.id,this.newPost.id).subscribe({
+      next:(data)=>{
+        console.log(data);
+
+        // this.success = "Product Added Successfully.";
+        // this.errorMessage="";
+        // this.newPost=new PostModel();
+      },
+      error:(err)=>{
+        console.log(err);
+        // console.log(err.error);
+        // this.errorMessage=err.error;
+        // this.success="";
+      }
+    })
+    this.router.navigate(['/post',this.newPost.id]);
 
   }
   
