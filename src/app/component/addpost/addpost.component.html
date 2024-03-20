@@ -64,13 +64,11 @@
     <select [(ngModel)]="newPost.postType" name="postType">
       <option *ngFor="let type of postTypes" [ngValue]="type">{{ type }}</option>
     </select>
-
-
-    <br>
+  <br>
 
 
 
 
-    <input type="submit" (click)="addNewPost()" class="btn btn-success" value="Add Post" [disabled]="!userForm.valid">
+    <input type="submit" (click)="addNewPost()"  class="btn btn-success" value="Add Post" [disabled]="!userForm.valid">
   </form>
   

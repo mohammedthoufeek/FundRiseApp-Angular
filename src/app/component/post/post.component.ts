@@ -66,4 +66,6 @@ export class PostComponent {
     this.router.navigate(['/transaction']);
   }
 
+  
+
 }

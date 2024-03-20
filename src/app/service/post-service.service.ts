@@ -33,6 +33,10 @@ export class PostServiceService {
   public deletePostById(id:number):Observable<any>{
     return this.http.delete("http://localhost:8090/post/"+id);
   }
+
+  public getPostByUserId(userId?:number): Observable<any>{
+    return this.http.get(`http://localhost:8090/user/${userId}/posts`);
+  }
 }
 
 
