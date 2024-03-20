@@ -1,3 +1,4 @@
+
 /* notification.component.css */
 .notification-list {
     list-style: none;
@@ -10,6 +11,9 @@
     margin-bottom: 10px;
   }
   .DateTime{
-    margin-left: 1300px;
+    margin-left: 1130px;
   }
-  
+
+.DateTime{
+    margin-left: 690px;
+}
