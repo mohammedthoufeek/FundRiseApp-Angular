@@ -35,3 +35,8 @@
 .boxx button i {
     color: #333; /* Set color for the icon */
 }
+
+
+.container{
+    display: flex;
+}

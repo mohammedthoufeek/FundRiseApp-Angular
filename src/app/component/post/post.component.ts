@@ -62,8 +62,11 @@ export class PostComponent {
     return url.startsWith('https://www.youtube.com'); 
   return false;
   }
-  transaction( ) {
-    this.router.navigate(['/transaction']);
+  transaction( id:number|undefined) {
+    this.router.navigate(['/transaction',id]);
+  }
+  comment(id:number|undefined){
+    this.router.navigate(['/comment',id])
   }
 
 }
