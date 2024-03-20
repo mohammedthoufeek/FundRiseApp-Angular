@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import {PostServiceService} from '../../service/post-service.service'
 import { UserService } from '../../service/userservice.service';
 import { PostType } from '../../models/posttype.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addpost',
@@ -26,7 +27,7 @@ export class AddpostComponent {
 
   
   id:number=this.userService.usermodel.id||0;
-  constructor(private userService: UserService,private postService: PostServiceService){  }
+  constructor(private userService: UserService,private postService: PostServiceService, private router: Router){  }
 
 
   addNewPost(){
@@ -46,6 +47,8 @@ export class AddpostComponent {
         this.success="";
       }
     })
+      this.router.navigate(['post'])
+    
 
   }
   
