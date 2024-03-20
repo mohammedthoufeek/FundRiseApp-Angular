@@ -4,11 +4,11 @@
   </div>
 </div>
 
-<div class="container row">
-    <div class="col-lg-6">
+<div class="row">
+    <div class="col-lg-5 offset-lg-1">
         <div class="row">
             <div *ngIf="!showTable" class="card" >
-                <form #userForm="ngForm">
+                <form #userForm="ngForm" class="form">
                     <div class="form-group">
                         <label for="balance" class="text-secondary">Balance Amount:</label>
                         <input id="balance" name="balance" [(ngModel)]="bankAccounts.balance" class="form-control" type="text" />
@@ -41,12 +41,14 @@
                         <p><strong>Account Name: </strong>{{bankAccounts.accountName}}</p>
                         <p><strong>Account Number: </strong>{{bankAccounts.accountNumber}}</p>  
                         <p><strong>CVV: </strong>{{bankAccounts.cvv}}</p>  
-                        <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p> 
+                        <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p> <br>
+                        <p><button class="btn btn-danger" (click)="deleteAccount(this.bankAccounts.id)" >Delete</button>
+                        <button class="btn btn-success" (click)="updateAccount(this.bankAccounts.id)">Update</button></p>
                     </div> 
-                </div>
+                </div> 
             </div>
         </div>
-        <div class="col-lg-6 ">
+        <div class="col-lg-5 ">
             <div class="card">
               <h4 class="text-info text-center">Account Details:</h4>
               <div class="text-center"><button class="btn btn-success btn-block" (click)="showDetails()">Click here</button></div><br>

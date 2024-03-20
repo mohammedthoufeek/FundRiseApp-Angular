@@ -58,7 +58,32 @@ export class BankAccountComponent {
     });
   }
 
-  
+  deleteAccount(id?:number){
+    this.bankAccountService.deleteAccountById(this.id)
+    .subscribe({
+      next:(data)=>{
+        console.log("deleted data: ",data);
+        console.log(this.bankAccounts);
+      },
+
+      error:(err)=>{
+        console.log(err);
+      }
+    });
+  } 
+
+  updateAccount(id?:number){
+    this.bankAccountService.updateAccountNameById(this.id)
+    .subscribe({
+      next:(data)=>{
+        console.log(data);
+      },
+
+      error:(err)=>{
+        console.log(err);
+      }
+    });
+  }
 
 }
 

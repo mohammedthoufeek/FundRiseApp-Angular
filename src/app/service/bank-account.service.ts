@@ -6,13 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BankAccountService {
-
-  
+export class BankAccountService { 
 
   constructor(private http: HttpClient) { 
   }
-  // bankAccount:BankAccount = new BankAccount();
+
   createAccount(data:BankAccount, id?:number):Observable<any>{
     console.log("Service data:",data);
     return this.http.post<any>(`http://localhost:8090/accounts/${id}`, data);
@@ -26,7 +24,7 @@ export class BankAccountService {
     return this.http.get(`http://localhost:8090/account/${id}`);
   }
 
-  deleteAccountById(data:BankAccount):Observable<BankAccount>{
-    return this.http.delete("http://localhost:8090/account/{id}");
+  deleteAccountById(id?:number):Observable<BankAccount>{
+    return this.http.delete(`http://localhost:8090/account/${id}`);
   }
 }
