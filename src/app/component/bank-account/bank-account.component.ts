@@ -16,64 +16,50 @@ import { CommonModule } from '@angular/common';
 })
 export class BankAccountComponent {
 
-  success:string="";
-  errorMessage:string="";
+  showTable: boolean = false;
+
       
-  newBankAccount: BankAccount = new BankAccount();
-  bankAccounts:BankAccount= this.bankAccountService.bankAccount;
+  // bankAccounts:BankAccount= this.bankAccountService.bankAccount;
+  bankAccounts:BankAccount = new BankAccount();
 
   id = this.userService.usermodel.id;
 
-  constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){
+  constructor(private bankAccountService: BankAccountService,private userService:UserService, private router:Router, private fb:FormBuilder){ 
+    }
 
-    
-  }
-
-  ngOnIt(){
+  showDetails(){
+    this.showTable = !this.showTable;
     this.bankAccountService.getAccountById(this.id)
-    .subscribe({
-      next:(data)=>{
-        console.log(data);
-        // this.success="displayed all accounts";
-        // this.errorMessage="";
-        // this.bankAccountService.bankAccount=data;
-        // this.newBankAccount=data;
-        // console.log(this.bankAccountService.bankAccount);
-        // console.log(this.newBankAccount);
-      },
-      error: (err)=>{
-        console.log(err);
-        console.log(err.error);
-        // this.errorMessage=err.error;
-        // this.success="";
-      }
+    .subscribe((data:BankAccount)=>{
+      console.log("Recevide data:",data);
+      this.bankAccounts=data;
+      // console.log("Bsnkac",this.bankAccounts);
     });
     
     console.log(this.bankAccounts);
 
   }
   onSubmit(){
-    console.log("new form data: ",this.newBankAccount)
+    console.log("new form data: ",this.bankAccounts)
 
-    this.bankAccountService.createAccount(this.newBankAccount,this.id)
+    this.bankAccountService.createAccount(this.bankAccounts,this.id)
     .subscribe({
       next: (data) =>{
         console.log("data: ",data)
-        this.success = "bank account created successfully"
-        this.errorMessage="";
         // this.bankAccountService.bankAccount=data;
-        // this.newBankAccount=data;
+        // this.bankAccounts=data;
         // console.log(this.bankAccountService.bankAccount)
-        // console.log(this.newBankAccount)
-        // this.router.navigate(['transaction'])
-        this.newBankAccount=new BankAccount();
+        // console.log(this.bankAccounts)
+        this.bankAccounts=new BankAccount();
       },
       error: (err) =>{
         console.log(err);
-        console.log(err.error);
-        this.errorMessage=err.error;
-        this.success="";
       }
     });
   }
+
+  
+
 }
+
+

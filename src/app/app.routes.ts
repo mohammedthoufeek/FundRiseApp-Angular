@@ -12,6 +12,8 @@ import { ListmessagesComponent } from './component/listmessages/listmessages.com
 import { AddpostComponent } from './component/addpost/addpost.component';
 
 import { ListpostComponent } from './component/listpost/listpost.component';
+import { TransactionsComponent } from './component/transactions/transactions.component';
+import { BankAccountComponent } from './component/bank-account/bank-account.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +24,8 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },
+  { path: 'transactions', component: TransactionsComponent },
+  { path: 'bank-account', component: BankAccountComponent },
   { path: 'messageslist', component: ListmessagesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
