@@ -9,6 +9,7 @@ import { PostModel } from '../models/post-model';
 export class PostServiceService {
 
   constructor(private http: HttpClient) { }
+  postmodel:PostModel=new PostModel();
 
   public getAllPosts(): Observable<any>{
     return this.http.get(

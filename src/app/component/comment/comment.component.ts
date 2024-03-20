@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { CommentServiceService } from '../../service/comment-service.service';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
-import { CommentDto } from '../../models/comment-dto';
+
 import { Router } from '@angular/router';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../service/userservice.service';
@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, NgFor } from '@angular/common';
 import { Displaycomments } from '../../models/displaycomments';
 import { OnInit } from '@angular/core';
+import { PostModel } from '../../models/post-model';
+import { PostServiceService } from '../../service/post-service.service';
  
 
 @Component({
@@ -23,47 +25,38 @@ import { OnInit } from '@angular/core';
 export class CommentComponent implements OnInit{
   commentForm:FormGroup;
   userModel:Usermodel=new Usermodel();
-  commentModel:CommentDto=new CommentDto();
+  postModel:PostModel=new PostModel();
+  commentModel:CommentModel=new CommentModel();
   displayComments:Displaycomments[]=[];
 
   
-  comments: CommentDto[] = [];
+  comments: CommentModel[] = [];
 
-  constructor(private commentService:CommentServiceService, private userService: UserService, private router:Router,private fb:FormBuilder){
+  constructor(private commentService:CommentServiceService, private userService: UserService,private postservice:PostServiceService, private router:Router,private fb:FormBuilder){
     const currentDate = new Date();
    const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;  
     this.commentForm=this.fb.group({
-        userId:[402],
-        username:[this.userModel.name],
-        postId:[302],
-        message:[this.commentModel.message],
+        userId:[this.userService.usermodel.id],
+        username:[this.userService.usermodel.name],
+        postId:[this.postservice.postmodel.id],
+        message:[this.commentService.commentmodel.message],
         date:[formattedDate]
       });
        
   }
   ngOnInit(): void {
-    this.commentService.getAllComments().subscribe((comments) => {
-      this.comments = comments;
+    this.commentService.getCommentbyId(this.postModel.id).subscribe((comment) => {
+      this.comments = comment;
     });
+    // this.commentService.getAllComments().subscribe((comment)=>{
+    //   this.comments=comment;
+    // })
   }
-  // ngOnInit(): void {
-  //   this.fetchComments();
-  // }
-
-  // fetchComments() {
-  //   this.commentService.getAllComments().subscribe(
-  //     (data) => {
-  //       console.log(data);
-  //       this.displayComments = data.commentList;
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
+  
+  
   
   onSubmit(){
-    const formData:CommentDto=this.commentForm.value as CommentDto;
+    const formData:CommentModel=this.commentForm.value as CommentModel;
     console.log("formdtacomponent",formData);
     this.commentService.createComment(formData)
     .subscribe(
@@ -71,8 +64,6 @@ export class CommentComponent implements OnInit{
         next:(data)=>{
           console.log(data);
          
-          
-
         },
         error:(err)=>{
           console.log(err);
