@@ -35,12 +35,14 @@ export class AddpostComponent {
     this.postService.addNewPost(this.newPost,this.id).subscribe({
       next:(data)=>{
         console.log(data);
+        alert("Product Added Successfully.");
 
         this.success = "Product Added Successfully.";
         this.errorMessage="";
         this.newPost=new PostModel();
       },
       error:(err)=>{
+        alert(err.errorMessage);
         console.log(err);
         console.log(err.error);
         this.errorMessage=err.error;
