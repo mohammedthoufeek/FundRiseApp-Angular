@@ -4,49 +4,53 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-      <div *ngIf="!showTable" class="col-lg-6 card" >
-          <form #userForm="ngForm">
-              <div class="form-group">
-                  <label for="balance" class="text-secondary">Balance Amount:</label>
-                  <input id="balance" name="balance" [(ngModel)]="bankAccounts.balance" class="form-control" type="text" />
-              </div>
-              <div class="form-group">
-                  <label for="accountName" class="text-secondary">Account Name:</label>
-                  <input id="accountName" name="accountName" [(ngModel)]="bankAccounts.accountName" class="form-control" type="text" />
-              </div>
-              <div class="form-group">
-                  <label for="accountNumber" class="text-secondary">Account Number:</label>
-                  <input id="accountNumber" name="accountNumber" [(ngModel)]="bankAccounts.accountNumber" class="form-control" type="text" />
-              </div>
-              <div class="form-group">
-                  <label for="cvv" class="text-secondary">CVV:</label>
-                  <input id="cvv" name="cvv" [(ngModel)]="bankAccounts.cvv" class="form-control" type="text" />
-              </div>
-              <div class="form-group">
-                  <label for="bankName" class="text-secondary">Bank Name:</label>
-                  <input id="bankName" name="bankName" [(ngModel)]="bankAccounts.bankName" class="form-control" type="text" />
-              </div><br>
-              <button type="submit" (click)="onSubmit()" class="btn btn-success btn-block">Submit</button>
-          </form><br>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="card">
-          <h4 class="text-info text-center">Account Details:</h4>
-          <div class="text-center"><button class="btn btn-success btn-block" (click)="showDetails()">Click here</button></div><br>
+<div class="container row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div *ngIf="!showTable" class="card" >
+                <form #userForm="ngForm">
+                    <div class="form-group">
+                        <label for="balance" class="text-secondary">Balance Amount:</label>
+                        <input id="balance" name="balance" [(ngModel)]="bankAccounts.balance" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="accountName" class="text-secondary">Account Name:</label>
+                        <input id="accountName" name="accountName" [(ngModel)]="bankAccounts.accountName" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber" class="text-secondary">Account Number:</label>
+                        <input id="accountNumber" name="accountNumber" [(ngModel)]="bankAccounts.accountNumber" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv" class="text-secondary">CVV:</label>
+                        <input id="cvv" name="cvv" [(ngModel)]="bankAccounts.cvv" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName" class="text-secondary">Bank Name:</label>
+                        <input id="bankName" name="bankName" [(ngModel)]="bankAccounts.bankName" class="form-control" type="text" />
+                    </div><br>
+                    <button type="submit" (click)="onSubmit()" class="btn btn-success btn-block">Submit</button>
+                </form><br>
+            </div>
+                <div *ngIf="showTable">
+                    <div class="jumbotron text-info text-center">
+                        <h4>Added Account Section:</h4>
+                    </div>
+                    <div>
+                        <p><strong>Balance: </strong>{{bankAccounts.balance}}</p>  
+                        <p><strong>Account Name: </strong>{{bankAccounts.accountName}}</p>
+                        <p><strong>Account Number: </strong>{{bankAccounts.accountNumber}}</p>  
+                        <p><strong>CVV: </strong>{{bankAccounts.cvv}}</p>  
+                        <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p> 
+                    </div> 
+                </div>
+            </div>
         </div>
-          <div *ngIf="showTable">
-              <div class="jumbotron text-info text-center">
-                  <h4>Added Account Section:</h4>
-              </div>
-                  <p><strong>Balance: </strong>{{bankAccounts.balance}}</p>  
-                  <p><strong>Account Name: </strong>{{bankAccounts.accountName}}</p>
-                  <p><strong>Account Number: </strong>{{bankAccounts.accountNumber}}</p>  
-                  <p><strong>CVV: </strong>{{bankAccounts.cvv}}</p>  
-                  <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p>  
-          </div>
-      </div>
-  </div>
+        <div class="col-lg-6 ">
+            <div class="card">
+              <h4 class="text-info text-center">Account Details:</h4>
+              <div class="text-center"><button class="btn btn-success btn-block" (click)="showDetails()">Click here</button></div><br>
+            </div>
+    </div>
+  
 </div>

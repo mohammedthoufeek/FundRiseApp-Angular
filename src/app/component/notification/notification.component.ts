@@ -22,7 +22,7 @@ export class NotificationComponent  {
   constructor(private notificationService: NotificationServiceService,private userservice:UserService) {
    
     
-    this.notificationService.getNotificationsByUserId(2).subscribe(
+    this.notificationService.getNotificationsByUserId(this.userservice.usermodel.id).subscribe(
       {
         next: (data:NotificationModel[]) => {
           console.log(data);
