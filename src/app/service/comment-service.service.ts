@@ -19,14 +19,7 @@ export class CommentServiceService {
       return this.httpClient.post("http://localhost:8090/comment",data);
     }
 
-  
 
-    getIsAuthenticated(): boolean {
-      return this.isAuthenticated;
-    }
-    setIsAuthenticated(data:boolean): void  {
-       this.isAuthenticated=data;
-    }
     getCommentbyId(id?:number):Observable<CommentModel>{
       return this.httpClient.get("http://localhost:8090/comment/"+id);
 

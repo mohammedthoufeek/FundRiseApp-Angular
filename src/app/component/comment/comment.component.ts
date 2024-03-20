@@ -20,11 +20,12 @@ import { OnInit } from '@angular/core';
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.css'
 })
-export class CommentComponent  {
+export class CommentComponent implements OnInit{
   commentForm:FormGroup;
   userModel:Usermodel=new Usermodel();
   commentModel:CommentDto=new CommentDto();
   displayComments:Displaycomments[]=[];
+
   
   comments: CommentDto[] = [];
 
@@ -32,29 +33,34 @@ export class CommentComponent  {
     const currentDate = new Date();
    const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;  
     this.commentForm=this.fb.group({
-        
-        userId:[353],
-        postId:[256],
+        userId:[402],
+        username:[this.userModel.name],
+        postId:[302],
         message:[this.commentModel.message],
         date:[formattedDate]
       });
        
   }
   ngOnInit(): void {
-    this.fetchComments();
+    this.commentService.getAllComments().subscribe((comments) => {
+      this.comments = comments;
+    });
   }
+  // ngOnInit(): void {
+  //   this.fetchComments();
+  // }
 
-  fetchComments() {
-    this.commentService.getAllComments().subscribe(
-      (data) => {
-        console.log(data);
-        this.displayComments = data.commentList;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  // fetchComments() {
+  //   this.commentService.getAllComments().subscribe(
+  //     (data) => {
+  //       console.log(data);
+  //       this.displayComments = data.commentList;
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
   
   onSubmit(){
     const formData:CommentDto=this.commentForm.value as CommentDto;

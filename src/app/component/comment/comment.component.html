@@ -4,8 +4,8 @@
   <h3>Add Comment</h3>
   <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="message">Message:</label>
-      <input type="text" formControlName="message">
+      <label for="name" class="text-secondary">Messages</label>
+      <input formControlName="message" id="name" class="form-control" type="text" />
     </div>
     <button type="submit">Submit Comment</button>
   </form>
@@ -15,13 +15,15 @@
 <div class="comment-list">
   <h3>Comments</h3>
   <ul>
-    <li *ngFor="let display of displayComments">
+    <li *ngFor="let comment of comments">
       <div class="comment-item">
-        <p><strong>User ID: {{ display.userName}}</strong></p>
-        <p>Message: {{ display.message }}</p>
-        <p>Date: {{ display.date}}</p>
-        <p>Time: {{display.time}}</p>
+       
+        <p>Username:{{userModel.name}}</p>
+        <p>Date: {{ comment.date }}</p>
+        <p>Comment: {{ comment.message }}</p>
       </div>
     </li>
   </ul>
 </div>
+
+
