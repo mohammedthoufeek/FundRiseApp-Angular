@@ -1,8 +1,17 @@
-<p>post works!</p>
+<h1 class="text-primary">Post Details</h1>
 
+<div class="card mb-3 col-lg-8" style="background-color: #e0f7fa;"> 
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <h3 *ngIf="!safeUrl" class="text-bg-danger col-lg-6">The url you have posted is incorrect</h3>
+        <iframe *ngIf="safeUrl" [src]="safeUrl" class="card-img-top" style="width: 600px; height: 300px;"></iframe>
+        
+        <p class="card-text"><strong>Cause:</strong> {{ post.cause }}</p>
+        <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
+        <p class="card-text"><strong>Amount Needed:</strong> {{ post.amountNeeded }}</p>
+        <p class="card-text"><strong>Post Type:</strong> {{ post.postType }}</p>
+        <button (click)="transaction(post.id)" class="btn btn-primary">Donate</button>
+        <button (click)="comment(post.id)" class="btn btn-primary">Comment</button>
+    </div>
 
-<div *ngIf="post">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.cause }}</p>
-  </div>
-  
+</div>

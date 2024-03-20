@@ -26,8 +26,8 @@ export class ListpostComponent {
 
     
   }
-  viewPostDetails(post:  PostModel ) {
-    this.router.navigate(['/post', post.id]);
+  viewPostDetails(id:  number|undefined ) {
+    this.router.navigate(['/post',id]);
   }
 
 }
