@@ -18,7 +18,7 @@
         <p *ngIf="isInvestor">No Investors found</p>
         <div *ngFor="let investor of investorlist" class="boxx">
             <p>{{investor.name}}</p>
-            <button>
+            <button  class="rbutton" (click)="mapmessage(investor.id)">
                 <i class="fas fa-envelope"></i> <!-- Message Icon -->
             </button>
         </div>
@@ -28,7 +28,7 @@
         <p>No Charities found</p>
         <div *ngFor="let charity of charitylist" class="boxx">
             <p *ngIf="isCharity">{{charity.name}}</p>
-            <button>
+            <button  class="rbutton" (click)="mapmessage(charity.id)">
                 <i class="fas fa-envelope"></i> <!-- Message Icon -->
             </button>
         </div>
