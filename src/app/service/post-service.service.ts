@@ -34,11 +34,16 @@ export class PostServiceService {
     return this.http.delete("http://localhost:8090/post/"+id);
   }
 
+
   public updatePost(updatePost:PostModel,id:number):Observable<any>{
     console.log("Service side: ",updatePost);
     return this.http.put<any>("http://localhost:8090/post?userId=" + id,updatePost);
   }
   
+
+  public getPostByUserId(userId?:number): Observable<any>{
+    return this.http.get(`http://localhost:8090/user/${userId}/posts`);
+  }
 }
 
 

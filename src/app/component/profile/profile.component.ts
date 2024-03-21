@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Usermodel } from '../../models/usermodel';
 import { UserService } from '../../service/userservice.service';
 import {  HttpClientModule } from '@angular/common/http';
+import { PostServiceService } from '../../service/post-service.service';
+import { PostModel } from '../../models/post-model';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -12,7 +17,9 @@ import {  HttpClientModule } from '@angular/common/http';
 })
 export class ProfileComponent {
   user!: Usermodel;
-  constructor(private userservice:UserService) {
+  posts:PostModel[]=[];
+  // viewPost:boolean=false;
+  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router) {
    
     
     this.userservice.getProfileById(this.userservice.usermodel.id).subscribe(
@@ -27,6 +34,27 @@ export class ProfileComponent {
         }
       }
     );
+    
+  }
+  
+  getPostByUserId(){
+    this.postservice.getPostByUserId(this.userservice.usermodel.id).subscribe(
+      {
+        next: (data:PostModel[]) => {
+          // this.viewPost=true;
+          console.log(data);
+          this.posts=data;
+          
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      }
+    );
   }
 
+  viewPostDetails(id:  number|undefined ) {
+    this.router.navigate(['/post',id]);
+  }
 }
+
