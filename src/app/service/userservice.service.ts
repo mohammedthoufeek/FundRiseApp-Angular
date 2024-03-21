@@ -9,6 +9,7 @@ import { Signin } from '../models/signin';
   providedIn: 'root'
 })
 export class UserService {
+
   private isAuthenticated: boolean = false;
   usermodel:Usermodel=new Usermodel();
   messageuser:Usermodel=new Usermodel();
@@ -40,7 +41,6 @@ export class UserService {
   signUp(data:Usermodel):Observable<Usermodel>{
     return this.httpClient.post("http://localhost:8090/user", data);
   }
-
   getIsAuthenticated(): boolean {
     return this.isAuthenticated;
   }
@@ -56,7 +56,7 @@ export class UserService {
   getCharity():Observable<any>{
     return this.httpClient.get("http://localhost:8090/profiles/charity");
   }
-  getprofileById(id?:number):Observable<Usermodel>{
-    return this.httpClient.get("http://localhost:8090/profile/"+ id);
+  getProfileById(userId?:number):Observable<any>{
+    return this.httpClient.get(`http://localhost:8090/profile/${userId}`);
   }
 }

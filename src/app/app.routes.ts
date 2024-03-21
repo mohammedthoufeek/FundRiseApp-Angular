@@ -10,6 +10,7 @@ import { ListmessagesComponent } from './component/listmessages/listmessages.com
 import { AddpostComponent } from './component/addpost/addpost.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
 import { BankAccountComponent } from './component/bank-account/bank-account.component';
+import { UpdatePostComponent } from './component/update-post/update-post.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },

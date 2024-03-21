@@ -15,7 +15,12 @@ import { ListpostComponent } from '../listpost/listpost.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  
+  userlist:ListModel[]=[];
+  investorlist:ListModel[]=[];
+  charitylist:ListModel[]=[];
+  isuser:boolean=true;
+  isInvestor:boolean=true;
+  isCharity:boolean=true;
   constructor(private userService: UserService, private router: Router) {
     this.userService.getUsers().subscribe(
       {
@@ -88,5 +93,5 @@ export class HomeComponent {
       }
     )
   }
-
+ 
 }
