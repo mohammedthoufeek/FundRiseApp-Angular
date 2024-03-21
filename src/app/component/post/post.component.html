@@ -10,7 +10,8 @@
         <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
         <p class="card-text"><strong>Amount Needed:</strong> {{ post.amountNeeded }}</p>
         <p class="card-text"><strong>Post Type:</strong> {{ post.postType }}</p>
+        <button (click)="transaction(post.id)" class="btn btn-primary">Donate</button>
+        <button (click)="comment(post.id)" class="btn btn-primary">Comment</button>
     </div>
-    <button (click)="transaction()" class="btn btn-primary">Donate</button>
 
 </div>

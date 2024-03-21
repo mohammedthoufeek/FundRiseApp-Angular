@@ -1,74 +1,77 @@
-<h1>Add new Post</h1>
 
 
-<div class="alert alert-success" *ngIf="success">
-    <strong>Success!</strong> {{success}}
+
+<div class="container">
+  <h1 class="text-center">Add New Post</h1>
+
+  <div class="alert alert-success" *ngIf="success">
+      <strong>Success!</strong> {{ success }}
   </div>
   <div class="alert alert-danger" *ngIf="errorMessage">
-    <strong>Danger!</strong> {{errorMessage}}
+      <strong>Error!</strong> {{ errorMessage }}
   </div>
 
-
-
-  <form id="form1" #userForm="ngForm">
-
-    <label for="pTitle">Title:</label><br>
-    <input type="text" id="pTitle" name="pTitle" [(ngModel)]="newPost.title" #titleRef="ngModel" pattern="[A-Za-z ]{3,}"
-      required>
-
-    <div *ngIf="titleRef.invalid && (titleRef.touched || titleRef.dirty)">
-      <p *ngIf="titleRef.errors?.['required']" class="text-danger">Name is required, cant be balnk.</p>
-      <p *ngIf="titleRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 3 char required.</p>
+  <form id="form1" #userForm="ngForm" class="mt-4 form-container">
+    <div class="form-group">
+        <label for="pTitle">Title:</label>
+        <input type="text" id="pTitle" name="pTitle" [(ngModel)]="newPost.title" #titleRef="ngModel"
+            class="form-control" pattern="[A-Za-z ]{3,}" required>
+        <div *ngIf="titleRef.invalid && (titleRef.touched || titleRef.dirty)" class="text-danger">
+            <p *ngIf="titleRef.errors?.['required']">Name is required, can't be blank.</p>
+            <p *ngIf="titleRef.errors?.['pattern']">Only characters are allowed, minimum 3 characters required.</p>
+        </div>
     </div>
-    <br>
 
-
-    <label for="pUrl">URL Field:</label><br>
-    <input type="url" id="pUrl" name="pUrl" [(ngModel)]="newPost.urlField" #urlRef="ngModel" required>
-
-    <div *ngIf="urlRef.invalid && (urlRef.touched || urlRef.dirty)">
-      <p *ngIf="urlRef.errors?.['required']" class="text-danger">Url is required, cant be blank.</p>
+    <div class="form-group">
+        <label for="pUrl">URL Field:</label>
+        <input type="url" id="pUrl" name="pUrl" [(ngModel)]="newPost.urlField" #urlRef="ngModel"
+            class="form-control" required>
+        <div *ngIf="urlRef.invalid && (urlRef.touched || urlRef.dirty)" class="text-danger">
+            <p *ngIf="urlRef.errors?.['required']">URL is required, can't be blank.</p>
+        </div>
     </div>
-    <br>
 
-
-    <label for="pCause">Cause: </label><br>
-    <input type="text" id="pCause" name="pCause" [(ngModel)]="newPost.cause" #causeRef="ngModel" pattern="[A-Za-z ]{3,}" required>
-
-    <div *ngIf="causeRef.invalid && (causeRef.touched || causeRef.dirty)">
-      <p *ngIf="causeRef.errors?.['required']" class="text-danger">Cause is required, cant be blank.</p>
-      <p *ngIf="causeRef.errors?.['pattern']" class="text-danger">Only chars are allowed.</p>
+    <div class="form-group">
+        <label for="pCause">Cause:</label>
+        <input type="text" id="pCause" name="pCause" [(ngModel)]="newPost.cause" #causeRef="ngModel"
+            class="form-control" pattern="[A-Za-z ]{3,}" required>
+        <div *ngIf="causeRef.invalid && (causeRef.touched || causeRef.dirty)" class="text-danger">
+            <p *ngIf="causeRef.errors?.['required']">Cause is required, can't be blank.</p>
+            <p *ngIf="causeRef.errors?.['pattern']">Only characters are allowed.</p>
+        </div>
     </div>
-    <br>
 
-    <label for="pDetails">Details:</label><br>
-    <input type="text" id="pDetails" name="pDetails" [(ngModel)]="newPost.details" #DetailsRef="ngModel" pattern="[A-Za-z ]{10,}" required>
-
-    <div *ngIf="DetailsRef.invalid && (DetailsRef.touched || DetailsRef.dirty)">
-      <p *ngIf="DetailsRef.errors?.['required']" class="text-danger">Details is required, cant be blank.</p>
-      <p *ngIf="DetailsRef.errors?.['pattern']" class="text-danger">Only chars are allowed,Min 10 char required.</p>
+    <div class="form-group">
+        <label for="pDetails">Details:</label>
+        <input type="text" id="pDetails" name="pDetails" [(ngModel)]="newPost.details" #DetailsRef="ngModel"
+            class="form-control" pattern="[A-Za-z ]{10,}" required>
+        <div *ngIf="DetailsRef.invalid && (DetailsRef.touched || DetailsRef.dirty)" class="text-danger">
+            <p *ngIf="DetailsRef.errors?.['required']">Details is required, can't be blank.</p>
+            <p *ngIf="DetailsRef.errors?.['pattern']">Only characters are allowed, minimum 10 characters required.</p>
+        </div>
     </div>
-    <br>
 
-    <label for="pAmount">Amount Needed:</label><br>
-    <input type="number" id="pAmount" name="pAmount" [(ngModel)]="newPost.amountNeeded" #AmountRef="ngModel" pattern="[0-9]{5,}" required>
-
-    <div *ngIf="AmountRef.invalid && (AmountRef.touched || AmountRef.dirty)">
-        <p *ngIf="AmountRef.errors?.['required']" class="text-danger">Amount is required, cant be blank, atleast 10000.</p>
-        <div *ngIf="AmountRef.errors?.['pattern']">Invalid amount format, atleast 10000</div>
+    <div class="form-group">
+        <label for="pAmount">Amount Needed:</label>
+        <input type="number" id="pAmount" name="pAmount" [(ngModel)]="newPost.amountNeeded" #AmountRef="ngModel"
+            class="form-control" pattern="[0-9]{5,}" required>
+        <div *ngIf="AmountRef.invalid && (AmountRef.touched || AmountRef.dirty)" class="text-danger">
+            <p *ngIf="AmountRef.errors?.['required']">Amount is required, cant be blank, atleast 10000.</p>
+          <p *ngIf="AmountRef.errors?.['pattern']">Invalid amount format, atleast 10000</p>
+        </div>
     </div>
-    <br>
+
 
 
     <label for="postType">PostType:</label><br>
-    <select [(ngModel)]="newPost.postType" name="postType">
+    <select class="form-control" [(ngModel)]="newPost.postType" name="postType">
       <option *ngFor="let type of postTypes" [ngValue]="type">{{ type }}</option>
     </select>
-  <br>
 
 
 
 
     <input type="submit" (click)="addNewPost()"  class="btn btn-success" value="Add Post" [disabled]="!userForm.valid">
   </form>
+</div>
   

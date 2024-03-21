@@ -1,0 +1,23 @@
+.container{
+    margin-bottom: 20px;
+  }
+
+
+  .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      margin-top: 50px;
+  }
+
+  select.form-control,
+  input[type="submit"] {
+      margin-top: 10px;
+  }
+
+  input[type="submit"] {
+      width: 100%;
+  }

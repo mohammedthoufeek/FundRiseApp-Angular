@@ -8,6 +8,7 @@ import { PostType } from '../../models/posttype.enum';
 import { NotificationServiceService } from '../../service/notification-service.service';
 import { Router } from '@angular/router'; 
 
+
 @Component({
   selector: 'app-addpost',
   standalone: true,
@@ -28,9 +29,11 @@ export class AddpostComponent {
 
   
   id:number=this.userService.usermodel.id||0;
+
   constructor(private userService: UserService,private postService: PostServiceService,private notificationService:NotificationServiceService,private router:Router){ 
     
    }
+
 
 
   addNewPost(){
@@ -51,6 +54,8 @@ export class AddpostComponent {
         this.success="";
       }
     })
+      this.router.navigate(['post'])
+    
 
   }
   
