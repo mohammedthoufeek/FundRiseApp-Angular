@@ -1,6 +1,4 @@
 
-
-
 <div class="container">
   <h1 class="text-center">Add New Post</h1>
 
@@ -64,9 +62,13 @@
 
 
     <label for="postType">PostType:</label><br>
-    <select class="form-control" [(ngModel)]="newPost.postType" name="postType">
+    <select class="form-control" [(ngModel)]="newPost.postType" #PostTypeRef="ngModel" name="postType" required>
       <option *ngFor="let type of postTypes" [ngValue]="type">{{ type }}</option>
     </select>
+    <div *ngIf="PostTypeRef.invalid && (PostTypeRef.touched || PostTypeRef.dirty)" class="text-danger">
+        <p *ngIf="PostTypeRef.errors?.['required']">Post Type is required, cant be empty.</p>
+    
+    </div>
 
 
 

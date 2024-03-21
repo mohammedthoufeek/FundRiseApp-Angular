@@ -67,7 +67,7 @@ export class UpdatePostComponent {
         this.success = "";      }
 
     })
-    this.router.navigate(['post']);
+    this.router.navigate(['post',this.postId]);
   }
 
 
