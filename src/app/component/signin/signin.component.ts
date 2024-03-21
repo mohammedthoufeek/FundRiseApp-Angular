@@ -16,7 +16,8 @@ import { Signin } from '../../models/signin';
 export class SigninComponent {
   userForm: FormGroup;
   signinModel: Signin = new Signin();
-
+  success:string="";
+  errorMessage:string="";
   constructor(private userService: UserService,private router:Router,private fb: FormBuilder) {
     localStorage.setItem("isAuthenticated","false");
     this.userForm = this.fb.group({
@@ -39,18 +40,17 @@ export class SigninComponent {
              
           //  this.userService.setIsAuthenticated(true);
             this.router.navigate(['home']);
-            // this.message = "Account Added.";
-            // this.errorMessage = "";
+            this.success = "Signed in successfully";
+            this.errorMessage = "";
           },
           error: (err) => {
             console.log(err);
-            // // this.errorMessage="Could't add Account";/
-            // if (err.status == "0")
-            //   this.errorMessage = " Network error, please try again later."
-            // else
-            //   this.errorMessage = err.error;
-
-            // this.message = "";
+            // this.errorMessage="Could't add Account";/
+            if (err.status == "0")
+              this.errorMessage = " Network error, please try again later."
+            else
+              this.errorMessage = JSON.stringify(err.error);
+            this.success = "";
           }
         }
       );}

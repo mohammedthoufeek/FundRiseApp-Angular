@@ -4,28 +4,50 @@
         <p class='lead'>Welcome To FundRaise App</p>
         <p class='lead'>Register Page</p>
     </div>
+    <div class="alert alert-success" *ngIf="success">
+      <strong>Success!</strong> {{success}}
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      <strong>Danger!</strong> {{errorMessage}}
+    </div>
+  
 <div class="row">
     <div class="col-md-6 offset-sm-3 text-left">
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="name" class="text-secondary">Name</label>
           <input formControlName="name" id="name" class="form-control" type="text" />
+          <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('name')?.hasError('required')">Name is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="dob" class="text-secondary">Date of Birth</label>
           <input formControlName="dob" id="dob" class="form-control" type="date" />
+          <div *ngIf="userForm.get('dob')?.invalid && userForm.get('dob')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('dob')?.hasError('required')">dob is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="address" class="text-secondary">Address</label>
           <input formControlName="address" id="address" class="form-control" type="text" />
+          <div *ngIf="userForm.get('address')?.invalid && userForm.get('address')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('address')?.hasError('required')">address is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="phonenumber" class="text-secondary">Phone Number</label>
           <input formControlName="phonenumber" id="phonenumber" class="form-control" type="tel" />
+          <div *ngIf="userForm.get('phonenumber')?.invalid && userForm.get('phonenumber')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('phonenumber')?.hasError('required')">phone is required and should be in 10 digits</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="age" class="text-secondary">Age</label>
           <input formControlName="age" id="age" class="form-control" type="number" />
+          <div *ngIf="userForm.get('age')?.invalid && userForm.get('age')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('age')?.hasError('required')">age is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label class="text-secondary bold">Usertype</label>
@@ -34,16 +56,25 @@
             <option value="INVESTOR">Investor</option>
             <option value="CHARITY">Charity</option>
           </select>
+          <div *ngIf="userForm.get('usertype')?.invalid && userForm.get('usertype')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('usertype')?.hasError('required')">usertype is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="email" class="text-secondary">Email</label>
           <input formControlName="email" id="email" class="form-control" type="email" />
+          <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('email')?.hasError('required')">email is required.</p>
+          </div>
         </div>
         <div class="form-group">
           <label for="password" class="text-secondary">Password</label>
           <input formControlName="password" id="password" class="form-control" type="password" />
+          <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            <p class="text-danger" *ngIf="userForm.get('password')?.hasError('required')">password is required and should have minimum 6 digits,one capital and one number.</p>
+          </div>
         </div>
-        <button type="submit" class="btn btn-success btn-block">Submit</button>
+        <button type="submit" class="btn btn-success btn-block submitbtn">Submit</button>
       </form>
     </div>
   </div>

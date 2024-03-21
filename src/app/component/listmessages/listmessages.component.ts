@@ -43,7 +43,8 @@ export class ListmessagesComponent {
     this.userService.getProfileById(id).subscribe(
       {
         next: (data) => {
-          console.log(data);
+        console.log(data);
+        localStorage.setItem("messageuser",JSON.stringify(data))
         this.userService.messageuser=data;
         this.router.navigate(['messages']);
         },
