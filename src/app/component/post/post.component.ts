@@ -68,6 +68,11 @@ export class PostComponent {
   comment(id:number|undefined){
     this.router.navigate(['/comment',id])
   }
+  updatePost(id:number|undefined){
+    this.router.navigate(['updatePost',id])
+  }
+
+  
 
   
 
