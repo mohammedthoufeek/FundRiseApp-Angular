@@ -1,1 +1,49 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="text-center">
+        <div class="row mt-5">
+            <div class="col-lg-3">
+                <div class="card profile-card">
+                    <div *ngIf="user" class="card-body profile-item">
+                        <div class="profile-image">
+                            <img src="../../../assets/image/profile.jpeg" class="img-fluid" alt="User Image">
+                        </div>
+                        <div class="profile-details ">
+                            <p><strong>Name:</strong> {{ user.name }}</p>
+                            <p><strong>Email:</strong> {{ user.email }}</p>
+                            <p><strong>Address:</strong> {{ user.address }}</p>
+                            <p><strong>Phone Number:</strong> {{ user.phonenumber }}</p>
+                            <p><strong>Age:</strong> {{ user.age }}</p>
+                            <p><strong>DOB:</strong> {{ user.dob }}</p>
+                            <p><strong>User Type:</strong> {{ user.usertype }}</p>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary" (click)="getPostByUserId()">View Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" post-border col-md-9">
+                <div class="row justify-content-left mt-3">
+                    <div *ngIf="posts.length > 0" class="col-md-12">
+                        <div class="row">
+                            <div *ngFor="let post of posts" class="col-md-4">
+                                <div class="post-box">
+                                    <div class="card post-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ post.title }}</h5>
+                                            <p class="card-text"><strong>Cause:</strong> {{ post.cause }}</p>
+                                            <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
+                                            <p class="card-text"><strong>Amount Needed:</strong> {{ post.amountNeeded }}</p>
+                                            <button (click)="viewPostDetails(post.id)" class="btn btn-primary">View Post Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

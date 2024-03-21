@@ -1,1 +1,41 @@
-<p>home works!</p>
+<div class="container">
+    <div class="grid-container">
+
+        <div class="listpost-container">
+            <app-listpost></app-listpost>
+        </div>
+    
+    
+            <div class="users-list">
+                <h5>Users List</h5>
+                <p *ngIf="isuser">No Users found</p>
+                <div *ngFor="let user of userlist" class="boxx">
+                    <p>{{user.name}}</p>
+                    <button class="rbutton" (click)="mapmessage(user.id)">
+                        <i class="fas fa-envelope"></i> <!-- Message Icon -->
+                    </button>
+                </div>
+                <div>
+                    <h5>Investors List</h5>
+                    <p *ngIf="isInvestor">No Investors found</p>
+                    <div *ngFor="let investor of investorlist" class="boxx">
+                        <p>{{investor.name}}</p>
+                        <button>
+                            <i class="fas fa-envelope"></i> <!-- Message Icon -->
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h5>Charity List</h5>
+                    <p>No Charities found</p>
+                    <div *ngFor="let charity of charitylist" class="boxx">
+                        <p *ngIf="isCharity">{{charity.name}}</p>
+                        <button>
+                            <i class="fas fa-envelope"></i> <!-- Message Icon -->
+                        </button>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>

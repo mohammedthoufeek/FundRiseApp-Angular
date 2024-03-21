@@ -1,0 +1,67 @@
+.listbox{
+    margin-left: 1100px;
+}
+.boxx{
+    display: flex;
+    flex-direction: row;
+}
+.rbutton{
+    margin-left: 10px;
+      padding: 5px 12px;
+    size: 6px;
+}
+.users-list {
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    margin: 20px 0 50px 0 ;
+}
+.boxx {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee; 
+    padding: 5px 0; 
+}
+
+.boxx p {
+    margin: 0; 
+}
+
+.boxx button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.boxx button i {
+    color: #333; /* Set color for the icon */
+}
+
+
+
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    margin-top: 20px; /* Adjust top margin as needed */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12-column grid */
+    gap: 10px; /* Gap between grid items */
+    width: 100%;
+}
+
+.listpost-container {
+    grid-column: span 8; /* Post occupies 8 out of 12 columns */
+}
+
+.users-list {
+    grid-column: span 4; /* Users List occupies 4 out of 12 columns */
+}
+
+/* Add styling for the rest of the content */

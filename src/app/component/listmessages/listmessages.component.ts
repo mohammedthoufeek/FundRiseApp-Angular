@@ -40,7 +40,7 @@ export class ListmessagesComponent {
     )
   }
   mapmessage(id?:number){
-    this.userService.getprofileById(id).subscribe(
+    this.userService.getProfileById(id).subscribe(
       {
         next: (data) => {
           console.log(data);

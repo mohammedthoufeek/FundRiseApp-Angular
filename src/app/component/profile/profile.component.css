@@ -1,0 +1,49 @@
+.container {
+    background-color: #f9f9f9;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.profile-card {
+    background-color: #abe8f5;
+    border: 1px solid #ada9a9;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.profile-details p {
+    margin-bottom: 10px;
+   
+    color: #333;
+
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+}
+
+.post-box {
+    background-color:#abe8f5;
+    border: 1px solid #ada9a9;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.post-border{
+    border: 1px solid #ada9a9;
+
+}
+
+

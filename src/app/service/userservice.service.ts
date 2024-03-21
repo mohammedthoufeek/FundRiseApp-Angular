@@ -9,8 +9,11 @@ import { Signin } from '../models/signin';
   providedIn: 'root'
 })
 export class UserService {
+  private isAuthenticated: boolean = false;
+  usermodel:Usermodel=new Usermodel();
+  messageuser:Usermodel=new Usermodel();
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
     const storedData = localStorage.getItem("userdata");
     let storedId;
     if (storedData) {
@@ -22,9 +25,10 @@ export class UserService {
     } else {
       console.log("No userdata found in localStorage");
     }
-  }
-  private isAuthenticated: boolean = false;
-  usermodel:Usermodel=new Usermodel();
+   }
+
+ 
+
   signIn(data:Signin):Observable<Usermodel>{
     return this.httpClient.post("http://localhost:8090/signin", data);
 
@@ -42,5 +46,17 @@ export class UserService {
   }
   setIsAuthenticated(data:boolean): void  {
      this.isAuthenticated=data;
+  }
+  getUsers():Observable<any>{
+    return this.httpClient.get("http://localhost:8090/profiles/users");
+  }
+  getInvestors():Observable<any>{
+    return this.httpClient.get("http://localhost:8090/profiles/investors");
+  }
+  getCharity():Observable<any>{
+    return this.httpClient.get("http://localhost:8090/profiles/charity");
+  }
+  getprofileById(id?:number):Observable<Usermodel>{
+    return this.httpClient.get("http://localhost:8090/profile/"+ id);
   }
 }

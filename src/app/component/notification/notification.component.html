@@ -1,1 +1,40 @@
-<p>notification works!</p>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+      <div class="text-center">
+        
+        <div *ngIf="notificationData.length > 0; else noNotifications">
+          <h2 class="text-info mb-4">Notifications</h2>
+          <ul class="list-group notification-list">
+            <li *ngFor="let notification of notificationData" class="list-group-item list-group-item-info notification-item text-left" style="margin-bottom: 10px;">
+              <div class="text-left"> <!-- Align notification message to the left -->
+                <strong>{{ notification.message }}</strong>
+              </div>
+              <!-- <div class="DateTime">
+                <sub>{{ getTimeParts(notification.time)[0] || '' }}:</sub>
+                <sub>{{ getTimeParts(notification.time)[1] || '' }}:</sub>
+                <sub>{{ getTimeParts(notification.time)[2].split('.')[0] || '' }}</sub>,
+                <sub>{{ notification.date }}</sub>
+              </div> -->
+              <div>
+                <button (click)="viewPostDetails(notification.post?.id)" class="btn btn-primary">View Post Details</button>
+              </div>
+              <div class="DateTime">
+                <sub>{{notification.time}} , {{notification.date}}</sub>
+              </div>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noNotifications>
+  <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+    <div class="alert alert-info text-center" role="alert" style="width: 300px;">
+      No Notifications yet!
+    </div>
+  </div>
+</ng-template>

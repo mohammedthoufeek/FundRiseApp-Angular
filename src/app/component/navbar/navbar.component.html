@@ -1,4 +1,4 @@
-<div *ngIf="isUserSignedIn">
+<div *ngIf="isSigned">
     <div class="border">
         <ul class="nav nav-tabs  bg-info">
       
@@ -20,16 +20,8 @@
             routerLinkActive="active" >Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link colour" routerLink='messages' 
+            <a class="nav-link colour" routerLink='messageslist' 
             routerLinkActive="active" >Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link colour" routerLink='transaction' 
-            routerLinkActive="active" >Transaction</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link colour" routerLink='bank-account' 
-            routerLinkActive="active" >Bank Account</a>
           </li>
           <li class="nav-item">
             <a class="nav-link colour" routerLink='home' 
