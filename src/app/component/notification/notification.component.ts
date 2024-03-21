@@ -45,7 +45,16 @@ export class NotificationComponent  {
     }
     return [];
   }
-  viewPostDetails(id:  number|undefined ) {
-    this.router.navigate(['/post',id]);
-  }
+  // viewPostDetails(id:  number|undefined ) {
+  //   this.router.navigate(['/post',id]);
+  // }
+  viewPostDetails(id: number | undefined): void {
+    if (id !== undefined && id !== null && !isNaN(id)) {
+        this.router.navigate(['/post', id]);
+    } else {
+        console.error('Invalid post id provided');
+    }
+}
+
+
 }

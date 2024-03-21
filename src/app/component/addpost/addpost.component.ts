@@ -42,7 +42,7 @@ export class AddpostComponent {
         this.success = "Product Added Successfully.";
         this.errorMessage="";
         this.newPost=new PostModel();
-       // this.sendNotificationToAllUsersExceptPublisher();
+        this.sendNotificationToAllUsersExceptPublisher();
       },
       error:(err)=>{
         console.log(err);
@@ -53,6 +53,7 @@ export class AddpostComponent {
     })
 
   }
+  
   sendNotificationToAllUsersExceptPublisher(){
    
     this.notificationService.sendNotificationToAllUsersExceptPublisher(this.id,this.newPost.id).subscribe({
@@ -71,7 +72,10 @@ export class AddpostComponent {
       }
     })
     this.router.navigate(['/post',this.newPost.id]);
-
+    
   }
+  
+
+  
   
 }
