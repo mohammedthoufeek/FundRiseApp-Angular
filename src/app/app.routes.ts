@@ -9,12 +9,8 @@ import { MessagesComponent } from './component/messages/messages.component';
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
-import { UpdatePostComponent } from './component/update-post/update-post.component';
-// import {CommentComponent} from './component/comment/comment.component';
-
-
-import { ListpostComponent } from './component/listpost/listpost.component';
 import { BankAccountComponent } from './component/bank-account/bank-account.component';
+import { UpdatePostComponent } from './component/update-post/update-post.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
