@@ -9,6 +9,7 @@ import { MessagesComponent } from './component/messages/messages.component';
 import { ListmessagesComponent } from './component/listmessages/listmessages.component';
 import { AddpostComponent } from './component/addpost/addpost.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
+import { UpdatePostComponent } from './component/update-post/update-post.component';
 // import {CommentComponent} from './component/comment/comment.component';
 
 
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'messageslist', component: ListmessagesComponent },
   {path: 'transaction/:postId', component:TransactionsComponent},
   {path: 'comment/:postId', component:TransactionsComponent},
+  {path: 'updatePost/:postId', component:UpdatePostComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

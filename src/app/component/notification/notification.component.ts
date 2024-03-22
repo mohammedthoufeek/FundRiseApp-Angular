@@ -7,6 +7,9 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../service/userservice.service';
 import { FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { PostServiceService } from '../../service/post-service.service';
+import { PostModel } from '../../models/post-model';
 
 @Component({
   selector: 'app-notification',
@@ -18,8 +21,9 @@ import {  HttpClientModule } from '@angular/common/http';
 })
 export class NotificationComponent  {
  
+ 
   notificationData: NotificationModel[]=[];
-  constructor(private notificationService: NotificationServiceService,private userservice:UserService) {
+  constructor(private notificationService: NotificationServiceService,private userservice:UserService,private router:Router) {
    
     
     this.notificationService.getNotificationsByUserId(this.userservice.usermodel.id).subscribe(
@@ -41,4 +45,16 @@ export class NotificationComponent  {
     }
     return [];
   }
+  // viewPostDetails(id:  number|undefined ) {
+  //   this.router.navigate(['/post',id]);
+  // }
+  viewPostDetails(id: number | undefined): void {
+    if (id !== undefined && id !== null && !isNaN(id)) {
+        this.router.navigate(['/post', id]);
+    } else {
+        console.error('Invalid post id provided');
+    }
+}
+
+
 }

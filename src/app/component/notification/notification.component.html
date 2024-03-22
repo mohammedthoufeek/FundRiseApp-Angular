@@ -10,12 +10,19 @@
               <div class="text-left"> <!-- Align notification message to the left -->
                 <strong>{{ notification.message }}</strong>
               </div>
-              <div class="DateTime">
+              <!-- <div class="DateTime">
                 <sub>{{ getTimeParts(notification.time)[0] || '' }}:</sub>
                 <sub>{{ getTimeParts(notification.time)[1] || '' }}:</sub>
                 <sub>{{ getTimeParts(notification.time)[2].split('.')[0] || '' }}</sub>,
                 <sub>{{ notification.date }}</sub>
+              </div> -->
+              <div>
+                <button (click)="viewPostDetails(notification.post?.id)" class="btn btn-primary">View Post Details</button>
               </div>
+              <div class="DateTime">
+                <sub>{{notification.time}} , {{notification.date}}</sub>
+              </div>
+              
             </li>
           </ul>
         </div>
