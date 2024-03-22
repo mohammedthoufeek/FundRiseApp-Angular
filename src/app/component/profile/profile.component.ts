@@ -27,14 +27,9 @@ export class ProfileComponent {
   bankid?:number;
   showTable: boolean = false;
   // viewPost:boolean=false;
-
-  constructor(private shareService:SharedService, private userservice:UserService,private postservice:PostServiceService,private router:Router, private bankAccountService:BankAccountService) {
-    
-   this.shareService.currentBankAccountId.subscribe({
-    next:(id)=>{
-      this.bankid=id;
-    }
-   })
+  toggleView:boolean=false;
+  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router, private bankAccountService:BankAccountService) {
+   
     
     this.userservice.getProfileById(this.userservice.usermodel.id).subscribe(
       {
@@ -52,6 +47,7 @@ export class ProfileComponent {
   }
   
   getPostByUserId(){
+    this.toggleView=!this.toggleView;
     this.postservice.getPostByUserId(this.userservice.usermodel.id).subscribe(
       {
         next: (data:PostModel[]) => {

@@ -25,7 +25,7 @@ export class NotificationComponent  {
   notificationData: NotificationModel[]=[];
   constructor(private notificationService: NotificationServiceService,private userservice:UserService,private router:Router) {
    
-    
+   
     this.notificationService.getNotificationsByUserId(this.userservice.usermodel.id).subscribe(
       {
         next: (data:NotificationModel[]) => {
@@ -55,6 +55,7 @@ export class NotificationComponent  {
         console.error('Invalid post id provided');
     }
 }
+
 
 
 }
