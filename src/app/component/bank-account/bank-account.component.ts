@@ -59,7 +59,7 @@ export class BankAccountComponent {
   }
 
   deleteAccount(id?:number){
-    this.bankAccountService.deleteAccountById(this.id)
+    this.bankAccountService.deleteAccountByAccountNumber(this.bankAccounts.id)
     .subscribe({
       next:(data)=>{
         console.log("deleted data: ",data);
@@ -84,7 +84,4 @@ export class BankAccountComponent {
       }
     });
   }
-
 }
-
-

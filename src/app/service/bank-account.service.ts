@@ -16,7 +16,7 @@ export class BankAccountService {
     return this.http.post<any>(`http://localhost:8090/accounts/${id}`, data);
   }
 
-  updateAccountNameById(id?:number,accountName?:string):Observable<BankAccount>{
+  updateAccountNameById(id?:number,accountName?:string):Observable<any>{
     return this.http.patch(`http://localhost:8090/account/${id}`,accountName);
   }
 
@@ -24,7 +24,8 @@ export class BankAccountService {
     return this.http.get(`http://localhost:8090/account/${id}`);
   }
 
-  deleteAccountById(id?:number):Observable<BankAccount>{
-    return this.http.delete(`http://localhost:8090/account/${id}`);
+  deleteAccountByAccountNumber(id?:number):Observable<any>{
+    console.log("Service delete called",id);
+    return this.http.delete(`http://localhost:8090/account/${id}`); //http://localhost:8090/account/
   }
 }
