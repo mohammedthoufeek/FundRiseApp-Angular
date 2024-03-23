@@ -63,7 +63,7 @@ export class ProfileComponent {
   }
 
   viewPostDetails(id:  number|undefined ) {
-    // this.router.navigate(['/post',id]);
+    this.router.navigate(['/post',id]);
   }
 
   showDetails(){
