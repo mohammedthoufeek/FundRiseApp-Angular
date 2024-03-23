@@ -45,11 +45,14 @@ export class BankAccountComponent {
         // console.log(this.bankAccountService.bankAccount)
         // console.log(this.bankAccounts)
         this.bankAccounts=new BankAccount();
-        const bankAccountId = data.id; // Adjust this according to your actual data structure
+        const bankAccountId = data.id; 
         this.sharedService.changeBankAccountId(bankAccountId);
       
-        if(this.bankAccounts!=null){ alert("Account Created Successfully"); this.isAccount=false;}
-        this.router.navigate(['post']);
+        if(this.bankAccounts!=null){ 
+          alert("Account Created Successfully"); 
+          this.isAccount=false;
+        }
+        this.router.navigate(['profile',this.bankAccounts.id]);
       },
       error: (err) =>{
         console.log(err);
