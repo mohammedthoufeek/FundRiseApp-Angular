@@ -19,6 +19,9 @@
                         <div class="text-center mt-3">
                             <button class="btn btn-primary" (click)="getPostByUserId()">View Post</button>
                         </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary" (click)="showDetails()">View Account</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,9 +45,24 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="showTable && bankAccounts">
+                    <div class="jumbotron text-info text-center">
+                        <h4>Account Section:</h4>
+                    </div>
+                    <div>
+                        <p><strong>Balance: </strong>{{bankAccounts.balance}}</p>  
+                        <p><strong>Account Name: </strong>{{bankAccounts.accountName}}</p>
+                        <p><strong>Account Number: </strong>{{bankAccounts.accountNumber}}</p>  
+                        <p><strong>CVV: </strong>{{bankAccounts.cvv}}</p>  
+                        <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p> <br>
+                    </div> 
+                </div> 
+                <div *ngIf="showTable && !bankAccounts">
+                    <h3>Account not found</h3>
+                    <button (click)="createAccount()" class="btn btn-primary">Create Account</button>
+                </div>
             </div>
-
         </div>
-    </div>
+    </div>   
 </div>
 

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ListpostComponent } from '../listpost/listpost.component';
+import { Usermodel } from '../../models/usermodel';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { ListpostComponent } from '../listpost/listpost.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent {
   userlist:ListModel[]=[];
   investorlist:ListModel[]=[];
@@ -21,6 +23,7 @@ export class HomeComponent {
   isuser:boolean=true;
   isInvestor:boolean=true;
   isCharity:boolean=true;
+  fromuser:Usermodel=this.userService.usermodel;
   constructor(private userService: UserService, private router: Router) {
     this.userService.getUsers().subscribe(
       {

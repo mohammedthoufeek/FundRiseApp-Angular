@@ -17,38 +17,22 @@ import { ListModel } from '../../models/list-model';
 })
 export class MessagesComponent {
   fromuser:Usermodel=this.userService.usermodel;
-  touser:Usermodel=this.userService.messageuser;
+  touser:Usermodel=new Usermodel();
   message:String="";
   messageModel:Message=new Message();
   displayMessage:Displaymessage[]=[];
 
   constructor(private userService: UserService, private router: Router,private messageService:MessagesService) {
+    const storedData = localStorage.getItem("messageuser");
     
-    // this.messageService.getMessages(this.fromuser.id,this.touser.id) .subscribe(
-    //   {
-    //     next: (data) => {
-    //       console.log(data);
-    //       this.displayMessage=data.messageList;
-    //       // this.message = "Account Added.";
-    //       // this.errorMessage = "";
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //       // // this.errorMessage="Could't add Account";/
-    //       // if (err.status == "0")
-    //       //   this.errorMessage = " Network error, please try again later."
-    //       // else
-    //       //   this.errorMessage = err.error;
-    //       // this.message = "";
-    //     }
-    //   }
-    // );
-  
+    if (storedData) {
+      const data = JSON.parse(storedData);
+      this.touser=data;
+    } 
   }
   ngOnInit(): void {
     this.fetchMessages();
   }
-
   fetchMessages() {
     this.messageService.getMessages(this.fromuser.id, this.touser.id).subscribe(
       (data) => {

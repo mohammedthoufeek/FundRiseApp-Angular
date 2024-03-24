@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { PostModel } from '../models/post-model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,7 @@ export class PostServiceService {
   public getPostByUserId(userId?:number): Observable<any>{
     return this.http.get(`http://localhost:8090/user/${userId}/posts`);
   }
+  
 }
 
 

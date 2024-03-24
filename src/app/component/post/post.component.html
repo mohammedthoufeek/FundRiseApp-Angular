@@ -16,3 +16,25 @@
         <button (click)="comment(post.id)" class="btn btn-primary">Comment</button>
     </div>
 </div>
+<div class="card mb-3 col-lg-5" >
+    <h1>Comments</h1>
+ <app-comment></app-comment>
+</div>
+<form id="form1" #userForm="ngForm" class="mt-4 form-container">
+    <div class="form-group">
+        <label for="comment">Add comment</label>
+        <input type="text" id="comment" name="comment" [(ngModel)]="commentDto.message" #commentRef="ngModel"
+            class="form-control" required>
+        <div *ngIf="commentRef.invalid && (commentRef.touched || commentRef.dirty)" class="text-danger">
+            <p *ngIf="commentRef.errors?.['required']">Message is required, can't be blank.</p>
+        </div>
+    </div>
+    <button (click)="sendComment()" class="btn btn-primary">Send</button>
+    </form>
+
+    <div class="alert alert-success" *ngIf="success">
+        <strong>Success!</strong> {{success}}
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <strong>Danger!</strong> {{errorMessage}}
+      </div>

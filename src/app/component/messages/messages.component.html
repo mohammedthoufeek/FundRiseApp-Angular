@@ -6,8 +6,8 @@
 <div></div>
 <div class="message-container">
     <div *ngFor="let display of displayMessage" class="message-item">
-        <div class="username" *ngIf="display.user==fromuser.id"><h6>Me</h6></div>
-        <div *ngIf="display.user!=fromuser.id" class="username">{{display.userName}}</div>
+        <div class="username" *ngIf="display.user?.id==fromuser.id"><h6>Me</h6></div>
+        <div *ngIf="display.user?.id!=fromuser.id" class="username">{{display.userName}}</div>
         <div class="message">{{display.message}}</div>
         <div class="meta-info">
             <span class="date">{{display.date}},  </span>

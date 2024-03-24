@@ -6,7 +6,7 @@ export class Displaymessage {
         public date?:Date,
         public time?:Time,
         public message?: String,
-        public user?:number,
+        public user?:Usermodel,
         public userName?:String
         ) { }
 }

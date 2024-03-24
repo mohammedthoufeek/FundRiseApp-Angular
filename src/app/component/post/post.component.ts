@@ -6,14 +6,21 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { catchError, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { CommentDto } from '../../models/comment-dto';
 
 
+import { UserService } from '../../service/userservice.service';
+import { FormsModule } from '@angular/forms';
+import { CommentServiceService } from '../../service/comment-service.service';
+import { AppComponent } from '../../app.component';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './post.component.html',
+  imports: [CommonModule,FormsModule,CommentComponent],
+  
+templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
 export class PostComponent {
@@ -21,14 +28,19 @@ export class PostComponent {
   post: PostModel=new PostModel();
   url: string |undefined;
   safeUrl: SafeResourceUrl |undefined;
-
-
-  constructor(private route: ActivatedRoute,private postService: PostServiceService,private sanitizer: DomSanitizer, private router:Router) {
+  commentDto:CommentDto=new CommentDto();
+  success:string="";
+  errorMessage:string="";
+  constructor(private route: ActivatedRoute,private postService: PostServiceService,private sanitizer: DomSanitizer, private router:Router,private userService:UserService,private commentService:CommentServiceService) {
+    
+    this.commentDto.userId=this.userService.usermodel.id;
   }
-
+  
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.postId = +params['postId'];
+      console.log(+params['postId'])
+      this.commentDto.postId=this.postId;
       if (this.postId) {
         this.getPostDetails();
       }
@@ -62,7 +74,7 @@ export class PostComponent {
     return url.startsWith('https://www.youtube.com'); 
   return false;
   }
-  transaction( id:number|undefined) {
+  transaction( id?:number) {
     this.router.navigate(['/transaction',id]);
   }
   comment(id:number|undefined){
@@ -73,7 +85,27 @@ export class PostComponent {
   }
 
   
-
+sendComment(){
+  this.commentService.sendComment(this.commentDto)
+      .subscribe(
+        {
+          next: (data) => {
+            console.log(data);
+            this.success = "Comment sent successfully";
+            this.errorMessage = "";
+          },
+          error: (err) => {
+            console.log(err);
+            this.errorMessage="Could't add Account";
+            if (err.status == "0")
+              this.errorMessage = " Network error, please try again later."
+            else
+              this.errorMessage =JSON.stringify(err.error);
+            this.success = "";
+          }
+        }
+      );
+}
   
 
 }
