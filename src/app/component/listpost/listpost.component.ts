@@ -26,7 +26,9 @@ export class ListpostComponent {
 
     
   }
-  viewPostDetails(id:  number|undefined ) {
+  viewPostDetails(id?:number ) {
+    let ids=""+id;
+    localStorage.setItem("postId",ids);
     this.router.navigate(['/post',id]);
   }
 

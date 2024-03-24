@@ -1,6 +1,8 @@
 <h1 class="text-primary">Post Details</h1>
 
-<div class="card mb-3 col-lg-8" style="background-color: #e0f7fa;"> 
+<div class="card mb-3 col-lg-7" style="background-color: #e0f7fa; position: relative;"> 
+    <i class="fas fa-edit text-primary" style="position: absolute; top: 10px; right: 10px; cursor: pointer;" (click)="updatePost(post.id)"></i>
+
     <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <h3 *ngIf="!safeUrl" class="text-bg-danger col-lg-6">The url you have posted is incorrect</h3>
@@ -10,8 +12,29 @@
         <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
         <p class="card-text"><strong>Amount Needed:</strong> {{ post.amountNeeded }}</p>
         <p class="card-text"><strong>Post Type:</strong> {{ post.postType }}</p>
-        <button (click)="transaction(post.id)" class="btn btn-primary">Donate</button>
+        <button (click)="transaction(post.id)" class="btn btn-primary" style="margin-right: 10px;">Donate</button>
         <button (click)="comment(post.id)" class="btn btn-primary">Comment</button>
     </div>
-
 </div>
+<div class="card mb-3 col-lg-5" >
+    <h1>Comments</h1>
+ <app-comment></app-comment>
+</div>
+<form id="form1" #userForm="ngForm" class="mt-4 form-container">
+    <div class="form-group">
+        <label for="comment">Add comment</label>
+        <input type="text" id="comment" name="comment" [(ngModel)]="commentDto.message" #commentRef="ngModel"
+            class="form-control" required>
+        <div *ngIf="commentRef.invalid && (commentRef.touched || commentRef.dirty)" class="text-danger">
+            <p *ngIf="commentRef.errors?.['required']">Message is required, can't be blank.</p>
+        </div>
+    </div>
+    <button (click)="sendComment()" class="btn btn-primary">Send</button>
+    </form>
+
+    <div class="alert alert-success" *ngIf="success">
+        <strong>Success!</strong> {{success}}
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <strong>Danger!</strong> {{errorMessage}}
+      </div>

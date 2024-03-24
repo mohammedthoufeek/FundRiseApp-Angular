@@ -1,0 +1,11 @@
+<div class="message-container">
+    <div *ngFor="let display of commentList" class="message-item">
+        <!-- <div class="username" *ngIf="display.user?.id==fromuser.id"><h6>Me</h6></div> -->
+        <!-- <div *ngIf="display.user?.id!=fromuser.id" class="username">{{display.message}}</div> -->
+        <div class="message">{{display.message}}</div>
+        <div class="meta-info">
+            <span class="date">{{display.date}},  </span>
+            <span class="time">{{display.time}}</span>
+        </div>
+    </div>
+</div>

@@ -10,9 +10,10 @@
       padding: 5px 12px;
     size: 6px;
 }
-.listbox {
+.users-list {
     border: 1px solid #ccc; 
     padding: 10px; 
+    margin: 20px 0 50px 0 ;
 }
 .boxx {
     display: flex;
@@ -37,6 +38,30 @@
 }
 
 
-.container{
+
+
+
+
+.container {
     display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    margin-top: 20px; /* Adjust top margin as needed */
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12-column grid */
+    gap: 10px; /* Gap between grid items */
+    width: 100%;
+}
+
+.listpost-container {
+    grid-column: span 8; /* Post occupies 8 out of 12 columns */
+}
+
+.users-list {
+    grid-column: span 4; /* Users List occupies 4 out of 12 columns */
+}
+
+/* Add styling for the rest of the content */

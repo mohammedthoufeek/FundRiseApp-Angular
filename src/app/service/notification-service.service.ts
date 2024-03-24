@@ -12,7 +12,10 @@ export class NotificationServiceService {
   constructor(private httpClient: HttpClient) { }
   notification:NotificationModel = new NotificationModel();
   getNotificationsByUserId(userId?: number): Observable<any> {
-    return this.httpClient.get(`http://localhost:8090/Notifications/${userId}`);
+    return this.httpClient.get(`http://localhost:8090/Notification/${userId}`);
+  }
+  sendNotificationToAllUsersExceptPublisher(userId?:number, postId?:number) : Observable<any> {
+    return this.httpClient.get(`http://localhost:8090/Notification/${userId}/${postId}`);
   }
   
       

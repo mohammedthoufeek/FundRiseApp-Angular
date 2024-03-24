@@ -10,10 +10,11 @@
     padding: 10px;
     margin-bottom: 10px;
   }
-  .DateTime{
+  /* .DateTime{
     margin-left: 1130px;
-  }
+  } */
 
 .DateTime{
-    margin-left: 690px;
+    margin-left: 500px;
+    color: black;
 }
