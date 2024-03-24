@@ -2,12 +2,12 @@
     <div class="text-center">
         <div class="row mt-5">
             <div class="col-lg-3">
-                <div class="card profile-card">
-                    <div *ngIf="user" class="card-body profile-item">
+                <div class="profile-card">
+                    <div *ngIf="user" class="profile-item">
                         <div class="profile-image">
-                            <img src="../assets/image/profile.jpeg" class="img-fluid" alt="User Image">
+                            <img src="../../../assets/image/profile.jpeg" class="img-fluid" alt="User Image">
                         </div>
-                        <div class="profile-details">
+                        <div class="profile-details ">
                             <p><strong>Name:</strong> {{ user.name }}</p>
                             <p><strong>Email:</strong> {{ user.email }}</p>
                             <p><strong>Address:</strong> {{ user.address }}</p>
@@ -19,17 +19,20 @@
                         <div class="text-center mt-3">
                             <button class="btn btn-primary" (click)="getPostByUserId()">View Post</button>
                         </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary" (click)="showDetails()">View Account</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class=" post-border col-md-9">
+            <div class=" col-md-9">
                 <div class="row justify-content-left mt-3">
-                    <div *ngIf="posts.length > 0" class="col-md-12">
+                    <div *ngIf="posts.length > 0 && toggleView"   class="col-md-12">
                         <div class="row">
                             <div *ngFor="let post of posts" class="col-md-4">
                                 <div class="post-box">
-                                    <div class="card post-card">
-                                        <div class="card-body">
+                                    <div class=" post-card">
+                                        <div >
                                             <h5 class="card-title">{{ post.title }}</h5>
                                             <p class="card-text"><strong>Cause:</strong> {{ post.cause }}</p>
                                             <p class="card-text"><strong>Details:</strong> {{ post.details }}</p>
@@ -42,8 +45,24 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="showTable && bankAccounts">
+                    <div class="jumbotron text-info text-center">
+                        <h4>Account Section:</h4>
+                    </div>
+                    <div>
+                        <p><strong>Balance: </strong>{{bankAccounts.balance}}</p>  
+                        <p><strong>Account Name: </strong>{{bankAccounts.accountName}}</p>
+                        <p><strong>Account Number: </strong>{{bankAccounts.accountNumber}}</p>  
+                        <p><strong>CVV: </strong>{{bankAccounts.cvv}}</p>  
+                        <p><strong>Bank Name: </strong>{{bankAccounts.bankName}}</p> <br>
+                    </div> 
+                </div> 
+                <div *ngIf="showTable && !bankAccounts">
+                    <h3>Account not found</h3>
+                    <button (click)="createAccount()" class="btn btn-primary">Create Account</button>
+                </div>
             </div>
-
         </div>
-    </div>
+    </div>   
 </div>
+

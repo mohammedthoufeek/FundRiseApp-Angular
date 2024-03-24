@@ -1,10 +1,10 @@
-<h1 class="text-primary">List of Posts</h1>
+<h1 style="color: #1e1f5c;">List of Posts</h1>
 
 <div *ngIf="posts.length > 0">
     <div class="row">
-        <div class="col-md-4" *ngFor="let post of posts">
-            <div class="card mb-3" style="background-color: azure;"> 
-                <div class="card-body">
+        <div class="col-md-4 " *ngFor="let post of posts">
+            <div class="card mb-3" > 
+                <div class="card-body colour-post">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ post.cause }}</h6>
                     <p class="card-text">Amount Needed: {{ post.amountNeeded }}</p>

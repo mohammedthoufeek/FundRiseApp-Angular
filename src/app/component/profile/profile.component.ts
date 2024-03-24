@@ -5,7 +5,11 @@ import { UserService } from '../../service/userservice.service';
 import {  HttpClientModule } from '@angular/common/http';
 import { PostServiceService } from '../../service/post-service.service';
 import { PostModel } from '../../models/post-model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BankAccountService } from '../../service/bank-account.service';
+import { SharedService } from '../../service/share.service';
+import { BankAccount } from '../../models/bank-account';
+
 
 
 @Component({
@@ -18,10 +22,13 @@ import { Router } from '@angular/router';
 export class ProfileComponent {
   user!: Usermodel;
   posts:PostModel[]=[];
+  bankAccounts:BankAccount=new BankAccount();
+
+  bankid?:number;
+  showTable: boolean = false;
   // viewPost:boolean=false;
-  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router) {
-   
-    
+  toggleView:boolean=true;
+  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router, private bankAccountService:BankAccountService,private route:ActivatedRoute) {
     this.userservice.getProfileById(this.userservice.usermodel.id).subscribe(
       {
         next: (data:Usermodel) => {
@@ -34,10 +41,12 @@ export class ProfileComponent {
         }
       }
     );
-    
   }
+
   
   getPostByUserId(){
+    this.toggleView=true;
+    this.showTable=false;
     this.postservice.getPostByUserId(this.userservice.usermodel.id).subscribe(
       {
         next: (data:PostModel[]) => {
@@ -55,6 +64,33 @@ export class ProfileComponent {
 
   viewPostDetails(id:  number|undefined ) {
     this.router.navigate(['/post',id]);
+  }
+
+  showDetails(){
+    this.showTable=true;
+    this.toggleView=false;
+    // this.route.params.subscribe(params => {
+    //   this.bankid = +params['bankAccountId'];
+    //   if (this.bankid) {
+        this.bankAccountService.getAccountById(this.userservice.usermodel.id).subscribe(
+          {
+            next: (data) => {
+              console.log(data);
+            this.bankAccountService.bankaccount=data;
+            this.bankAccounts=this.bankAccountService.bankaccount;
+            console.log("bank",this.bankAccounts,this.bankAccountService.bankaccount)
+            },
+            error: (err) => {
+              console.log(err);
+            
+            }
+          }
+        );
+        
+    // console.log(this.bankAccounts);
+  }
+  createAccount(){
+    this.router.navigate(['bank-account']);
   }
 }
 

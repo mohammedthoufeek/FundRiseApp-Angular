@@ -1,69 +1,39 @@
-<div class="container-fluid">
-    <div class="jumbotron text-info text-center">
-        <h1>Transaction Section:</h1>
-    </div>
-</div>
- 
-<div *ngIf="success">
-  <strong>Success!! </strong>{{success}}
-</div>
-
-<div class="row">
-    <div class="col-md-6 offset-sm-3 text-left">
-        <form if="form1" #userForm="ngForm">
-          <div class="form-group">
-            <label for="balance" class="text-secondary">Balance Amount: </label>
-            <input id="balance" name="balance" [(ngModel)]="newBankAccount.balance" class="form-control" type="text" />
-          </div>
-        <div class="form-group">
-            <label for="accountName" class="text-secondary">Account Name : </label>
-            <input id="accountName" name="accountName" [(ngModel)]="newBankAccount.accountName" class="form-control" type="text" /><br>
-          </div>
-        <div class="form-group">
-            <label for="accountNumber" class="text-secondary">Account Number : </label>
-            <input id="accountNumber" name="accountNumber" [(ngModel)]="newBankAccount.accountNumber" class="form-control" type="text" />
-          </div>
-        <div class="form-group">
-            <label for="cvv" class="text-secondary">CVV : </label>
-            <input id="cvv" name="cvv" [(ngModel)]="newBankAccount.cvv" class="form-control" type="text" />
-          </div>
-        <div class="form-group">
-            <label for="bankName" class="text-secondary">Bank Name : </label>
-            <input id="bankName" name="bankName" [(ngModel)]="newBankAccount.bankName" class="form-control" type="text" /><br>
-          </div>
-          <button type="submit" (click)="onSubmit()" class="btn btn-success btn-block">Submit</button>
-        </form>
+<div *ngIf="isAccount">
+    
+    <div class="container-fluid">
+        <div class="jumbotron text-info text-center">
+          <h1>Account Creation Section</h1>
+        </div>
       </div>
-</div>
-
-<br><br><br>
-
-<div class="container-fluid">
-    <div class="jumbotron text-info text-center">
-        <h1>Added Account Section:</h1>
-    </div>
-</div>
-
-<div class="container-fluid">
-  <!-- <h4 class="container-fluid" *ngIf="bankAccounts.length<1">No Accounts</h4> -->
-  <table class="table table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th>Balance</th>
-        <th>Account Name</th>
-        <th>Account Number</th>
-        <th>CVV</th>
-        <th>Bank Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>{{bankAccounts.balance}}</th>
-      <th>{{bankAccounts.accountName}}</th>
-      <th>{{bankAccounts.accountNumber}}</th>
-      <th>{{bankAccounts.cvv}}</th>
-      <th>{{bankAccounts.bankName}}</th>
-    </tr>
-  </tbody>
-  </table>
+      
+      <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 50px;">
+        <div class="card col-md-6">
+          <div class="card-body">
+            <form #userForm="ngForm" class="form">
+              <div class="form-group">
+                <label for="balance" class="text-secondary">Balance Amount:</label>
+                <input id="balance" name="balance" [(ngModel)]="bankAccounts.balance" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="accountName" class="text-secondary">Account Name:</label>
+                <input id="accountName" name="accountName" [(ngModel)]="bankAccounts.accountName" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="accountNumber" class="text-secondary">Account Number:</label>
+                <input id="accountNumber" name="accountNumber" [(ngModel)]="bankAccounts.accountNumber" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="cvv" class="text-secondary">CVV:</label>
+                <input id="cvv" name="cvv" [(ngModel)]="bankAccounts.cvv" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="bankName" class="text-secondary">Bank Name:</label>
+                <input id="bankName" name="bankName" [(ngModel)]="bankAccounts.bankName" class="form-control" type="text" />
+              </div><br>
+              <button type="submit" (click)="onSubmit()" class="btn btn-success btn-block">Submit</button>
+            </form><br>
+          </div>
+        </div>
+      </div>
+      
 </div>

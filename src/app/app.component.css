@@ -12,3 +12,11 @@ html, body {
 footer {
   margin-top: auto;
 }
+.colour1{
+    background-color: #1e1f5c;
+    color:white;
+}
+
+.colour2{
+    align-items: end;
+}

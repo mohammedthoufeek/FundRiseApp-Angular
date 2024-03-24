@@ -39,6 +39,7 @@ export class PostComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.postId = +params['postId'];
+      console.log(+params['postId'])
       this.commentDto.postId=this.postId;
       if (this.postId) {
         this.getPostDetails();
@@ -73,7 +74,7 @@ export class PostComponent {
     return url.startsWith('https://www.youtube.com'); 
   return false;
   }
-  transaction( id:number|undefined) {
+  transaction( id?:number) {
     this.router.navigate(['/transaction',id]);
   }
   comment(id:number|undefined){

@@ -25,7 +25,7 @@ export class NotificationComponent  {
   notificationData: NotificationModel[]=[];
   constructor(private notificationService: NotificationServiceService,private userservice:UserService,private router:Router) {
    
-    
+   
     this.notificationService.getNotificationsByUserId(this.userservice.usermodel.id).subscribe(
       {
         next: (data:NotificationModel[]) => {
@@ -45,7 +45,17 @@ export class NotificationComponent  {
     }
     return [];
   }
-  viewPostDetails(id:  number|undefined ) {
-    this.router.navigate(['/post',id]);
-  }
+  // viewPostDetails(id:  number|undefined ) {
+  //   this.router.navigate(['/post',id]);
+  // }
+  viewPostDetails(id: number | undefined): void {
+    if (id !== undefined && id !== null && !isNaN(id)) {
+        this.router.navigate(['/post', id]);
+    } else {
+        console.error('Invalid post id provided');
+    }
+}
+
+
+
 }
