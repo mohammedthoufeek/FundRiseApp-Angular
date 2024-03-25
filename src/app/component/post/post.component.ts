@@ -99,7 +99,7 @@ export class PostComponent {
       },
      
     })
-    if(! this.bankAccountDetail){
+    if(this.bankAccountDetail.balance==undefined){
       alert("Account not present please add the account");
       this.router.navigate(['bank-account']);
     }
