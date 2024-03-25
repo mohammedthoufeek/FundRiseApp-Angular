@@ -25,6 +25,7 @@ export class UserService {
 
 
   signIn(data:Signin):Observable<Usermodel>{
+    console.log(data);
     return this.httpClient.post("http://localhost:8090/signin", data);
 
   }
