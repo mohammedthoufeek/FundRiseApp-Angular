@@ -7,13 +7,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { catchError, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CommentDto } from '../../models/comment-dto';
-
-
 import { UserService } from '../../service/userservice.service';
 import { FormsModule } from '@angular/forms';
 import { CommentServiceService } from '../../service/comment-service.service';
-import { AppComponent } from '../../app.component';
 import { CommentComponent } from '../comment/comment.component';
+import { BankAccount } from '../../models/bank-account';
+import { BankAccountService } from '../../service/bank-account.service';
+import { Usermodel } from '../../models/usermodel';
 
 @Component({
   selector: 'app-post',
@@ -31,12 +31,18 @@ export class PostComponent {
   commentDto:CommentDto=new CommentDto();
   success:string="";
   errorMessage:string="";
-  constructor(private route: ActivatedRoute,private postService: PostServiceService,private sanitizer: DomSanitizer, private router:Router,private userService:UserService,private commentService:CommentServiceService) {
+  bankAccountDetail:BankAccount=new BankAccount();
+  userId?:number;
+  userPostId?:PostModel=new PostModel();
+
+  constructor(private route: ActivatedRoute,private bankAccountService:BankAccountService,
+    private postService: PostServiceService,private sanitizer: DomSanitizer, private router:Router,private userService:UserService,private commentService:CommentServiceService) {
     
     this.commentDto.userId=this.userService.usermodel.id;
   }
   
   ngOnInit() {
+    this.userId=this.userService.usermodel.id;
     this.route.params.subscribe(params => {
       this.postId = +params['postId'];
       console.log(+params['postId'])
@@ -74,9 +80,33 @@ export class PostComponent {
     return url.startsWith('https://www.youtube.com'); 
   return false;
   }
+
+
   transaction( id?:number) {
-    this.router.navigate(['/transaction',id]);
+    this.postService.getPostByUserId(this.userId).subscribe({
+      next:(data)=>{
+        this.userPostId=data;
+      }
+    })
+    if(this.userPostId?.id==this.postId){
+      alert("Post created and investor are same")
+      this.router.navigate(['post',this.postId]);
+    }
+    
+    this.bankAccountService.getAccountById(this.userId).subscribe({
+      next:(data)=>{
+        this.bankAccountDetail=data;
+      },
+     
+    })
+    if(this.bankAccountDetail.balance==undefined){
+      alert("Account not present please add the account");
+      this.router.navigate(['bank-account']);
+    }
+    else this.router.navigate(['/transaction',id]);
   }
+
+  
   comment(id:number|undefined){
     this.router.navigate(['/comment',id])
   }
