@@ -96,14 +96,18 @@ export class PostComponent {
     this.bankAccountService.getAccountById(this.userId).subscribe({
       next:(data)=>{
         this.bankAccountDetail=data;
-      },
-     
-    })
-    if(this.bankAccountDetail.balance==undefined){
-      alert("Account not present please add the account");
-      this.router.navigate(['bank-account']);
+
+        if(data==null){
+        alert("Account not present please add the account");
+        this.router.navigate(['bank-account']);
+        }
+        else
+        this.router.navigate(['/transaction',id]);
+        
+      }
     }
-    else this.router.navigate(['/transaction',id]);
+     )
+
   }
 
   
