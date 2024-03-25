@@ -23,9 +23,9 @@ export class TransactionsComponent {
   transaction:Transaction = new Transaction();
   userId:number=this.userService.usermodel.id||0;
   postId: number=0;
+  
 
   constructor(private transactionService: TransactionService, private router:Router,private userService: UserService,private route:ActivatedRoute){
-    this.transactionDto.userId=this.userId;
   }
 
   ngOnInit() {
