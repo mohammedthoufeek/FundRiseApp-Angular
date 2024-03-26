@@ -6,6 +6,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { PostServiceService } from '../../service/post-service.service';
 import { PostModel } from '../../models/post-model';
 import { Router } from '@angular/router';
+import { BankAccount } from '../../models/bank-account';
+import { BankAccountService } from '../../service/bank-account.service';
 
 
 @Component({
@@ -18,9 +20,10 @@ import { Router } from '@angular/router';
 export class ProfileComponent {
   user!: Usermodel;
   posts:PostModel[]=[];
+  account!:BankAccount;
   // viewPost:boolean=false;
   toggleView:boolean=false;
-  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router) {
+  constructor(private userservice:UserService,private postservice:PostServiceService,private router:Router,private bankService:BankAccountService) {
    
     
     this.userservice.getProfileById(this.userservice.usermodel.id).subscribe(
@@ -54,9 +57,11 @@ export class ProfileComponent {
       }
     );
   }
+ 
 
   viewPostDetails(id:  number|undefined ) {
     this.router.navigate(['/post',id]);
   }
+  
 }
 
